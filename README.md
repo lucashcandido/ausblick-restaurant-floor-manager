@@ -9,7 +9,8 @@ Ein Bildschirm für Tische, Reservierungen, Zeit am Tisch und Bestellungen. Aufg
   - Stoppuhr pro Tisch (seit wann besetzt, Personen / Plätze). Tische über der geplanten Zeit blinken rot mit „+11m“.
   - Reservierte Tische zeigen Uhrzeit und Name (ab „Mostrar mesa como reservada desde“, Standard 60 Min. vorher).
   - Oben: freie und besetzte Tische, Gäste heute, und **Hinweise** zum Antippen: Rechnung gewünscht, Tisch über der Zeit, Getränke seit X Min. nicht nachbestellt, lange Wartezeit, Reservierung kommt in 20 Min.
-- **Plan bearbeiten:** runde, quadratische oder rechteckige Tische hinzufügen, ziehen, an der blauen Ecke Größe ändern (10er-Raster). Tisch antippen → Name, Mindest- und Höchstgruppe, Form, Duplizieren, Löschen (mit Rückgängig; besetzte Tische lassen sich nicht löschen).
+- **Etagen als Tabs:** Hat ein Lokal mehrere Räume oder Etagen (Salón, Terraza, Planta alta …), stehen sie wie Browser-Tabs über dem Plan. Jeder Tab zeigt besetzte / alle Tische, ein roter Punkt heißt: dort möchte jemand zahlen oder ist über der Zeit. „+“ legt eine neue Etage an. Doppelklick auf einen Tab (oder ✎ im Bearbeiten-Modus): umbenennen, nach links/rechts verschieben, löschen (nur leer). Hinweise oben gelten für alle Etagen und springen beim Antippen auf die richtige. Reservierungen und Tischvorschläge gelten für das ganze Lokal; in der Tischauswahl steht die Etage dabei.
+- **Plan bearbeiten:** runde, quadratische oder rechteckige Tische hinzufügen, ziehen, an der blauen Ecke Größe ändern (10er-Raster). Tisch antippen → Name, Mindest- und Höchstgruppe, Etage (verschiebt den Tisch dorthin), Form, Duplizieren, Löschen (mit Rückgängig; besetzte Tische lassen sich nicht löschen).
 - **Tische zusammenstellen:** Rahmen über die Tische ziehen (oder einzeln antippen) → „Juntar“. Plätze und Gruppengrenzen zählen zusammen, im Plan gestrichelt umrahmt. Ein besetzter Tisch darf dazukommen (die Gruppe wächst). Im Tischfenster „Separar mesas“, mit Rückgängig.
 - **Tischfenster:**
   - Frei: Reservierung platzieren, ohne Reservierung platzieren, nächste Reservierungen des Tisches.
@@ -29,8 +30,8 @@ Ein Bildschirm für Tische, Reservierungen, Zeit am Tisch und Bestellungen. Aufg
   - Bei mehreren Lokalen ein Vergleich aller Lokale. Export als CSV.
 - **Ajustes y reglas:** Name des Restaurants, große Gruppe ab N, geplante Zeit am Tisch (normal / große Gruppe), Gruppen ohne Reservierung min/max (die App warnt, man kann trotzdem platzieren), Online-Reservierungen sperren und Höchstgröße online, Getränke- und Warte-Hinweise, Währung.
 - **Carta:** Gerichte mit Preis in Vorspeisen, Hauptgerichte, Desserts, Getränke.
-- **Locales:** mehrere Lokale mit eigenem Plan, eigenen Reservierungen und eigener Statistik; Regeln und Karte gelten für alle. Auswahl oben neben „+“. „Copiar plano de…“ übernimmt den Plan eines anderen Lokals.
-- **Beispiel zum Vorführen:** „Probar con datos de ejemplo“ im Einrichtungsbildschirm. Lädt ein Restaurant mit 14 Tischen, Karte, offenen Tischen, Reservierungen, Warteliste und 30 Tagen Verlauf. Bleibt nur auf dem Gerät, ohne GitHub.
+- **Locales:** mehrere Lokale mit eigenem Plan, eigenen Reservierungen und eigener Statistik; Regeln und Karte gelten für alle. Auswahl oben neben „+“. „Copiar plano de…“ übernimmt den Plan eines anderen Lokals samt Etagen.
+- **Beispiel zum Vorführen:** „Probar con datos de ejemplo“ im Einrichtungsbildschirm. Lädt ein Restaurant mit Salón (14 Tische) und Terraza (7 Tische), Karte, offenen Tischen, Reservierungen, Warteliste und 30 Tagen Verlauf. Bleibt nur auf dem Gerät, ohne GitHub.
 - Fenster speichern beim Schließen (daneben tippen, Escape, „Listo“); „Descartar“ verwirft. ES / EN / DE, offline-fähig, „Deshacer“ überall.
 
 ## Daten
@@ -41,7 +42,8 @@ Ein Bildschirm für Tische, Reservierungen, Zeit am Tisch und Bestellungen. Aufg
 |---|---|
 | `set` | Einstellungen (id `set`): `biz`, `big`, `online`, `onMax`, `wMin`, `wMax`, `dur`, `durBig`, `drink`, `wait`, `soon`, `cur` |
 | `loc` | Lokal: `n`, `o` (ohne Einträge gibt es ein Lokal `main`) |
-| `tbl` | Tisch: `loc`, `n`, `sh` (`round`/`sq`/`rect`), `x`, `y`, `w`, `h` (Plan = 1000 × 640), `min`, `max`, `j` (gleiches `j` = zusammengestellt) |
+| `flr` | Etage (Tab über dem Plan): `loc`, `n`, `o`. Ohne Einträge hat das Lokal eine Etage |
+| `tbl` | Tisch: `loc`, `fl` (Etage; leer oder unbekannt = erste Etage), `n`, `sh` (`round`/`sq`/`rect`), `x`, `y`, `w`, `h` (Plan = 1000 × 640), `min`, `max`, `j` (gleiches `j` = zusammengestellt) |
 | `menu` | Gericht: `n`, `p`, `cat` (`ent`/`pri`/`pos`/`beb`), `o` |
 | `res` | Reservierung oder Warteliste: `loc`, `d`, `a`, `n`, `p`, `tel`, `src`, `tb`, `dep`, `alg`, `note`, `tags`, `st` (`''`/`seated`/`noshow`/`cancel`/`wait`), `at`, `nt`, `v` |
 | `visit` | Besetzter Tisch: `loc`, `tb` (Tisch-IDs), `p`, `n`, `res`, `a` (seit), `end`, `tot`, `cl` (abgeräumt), `bill`, `dk`, `note`, `by`, `it` (Positionen `{id → {m, n, p, q, seat, cat, s, t}}`) |

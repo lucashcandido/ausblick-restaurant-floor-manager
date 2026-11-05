@@ -91,6 +91,15 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
 .alerts{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px;scrollbar-width:none}
 .al{flex:none;border:0;border-radius:999px;padding:7px 12px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap}
 .al.out{background:var(--out-soft);color:var(--out)} .al.warn{background:var(--warn-soft);color:var(--warn)} .al.blue{background:var(--blue-soft);color:var(--blue)}
+.ftabs{display:flex;align-items:flex-end;gap:3px;overflow-x:auto;padding:0 10px;scrollbar-width:none;position:relative;z-index:1;margin-bottom:-1px}
+.ftab{flex:none;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:12px 12px 0 0;background:var(--bg);color:var(--muted);font-weight:750;font-size:15px;padding:8px 14px;cursor:pointer;max-width:240px;white-space:nowrap;user-select:none;-webkit-user-select:none}
+.ftab:hover{color:var(--text)}
+.ftab.on{background:var(--card);color:var(--text);border-bottom-color:var(--card);padding-top:10px}
+.ftab .fn{overflow:hidden;text-overflow:ellipsis}
+.ftab .n{font-size:12px;font-weight:750;color:var(--muted);background:var(--accent-soft);border-radius:999px;padding:0 7px}
+.ftab .dot{width:8px;height:8px;border-radius:50%;background:var(--out);flex:none}
+.ftab .ed{font-size:13px;opacity:.7;margin-left:-2px}
+.ftab.add{padding:6px 12px;font-size:20px;line-height:1.1;font-weight:600}
 .floorwrap{overflow:auto;border:1px solid var(--line);border-radius:16px;background:var(--card);-webkit-overflow-scrolling:touch}
 .floor{position:relative;width:100%;min-width:700px;aspect-ratio:1000/640;background-image:radial-gradient(var(--line) 1.2px,transparent 1.2px);background-size:2% 3.125%;user-select:none;-webkit-user-select:none}
 .floor.edit,.floor.join{touch-action:none}
@@ -312,7 +321,7 @@ es: { locale:'es-AR', title:'Salón', setup_sub:'Configuración del dispositivo'
   g_dev:'Dispositivo de <b>{0}</b>', g_data:'Datos en {0}', g_demo:'Modo ejemplo: los datos quedan solo en este dispositivo.', language:'Idioma', g_rules:'Ajustes y reglas', g_menu:'Carta', g_locs:'Locales', g_share:'Compartir acceso (código)', g_sync:'Sincronizar ahora', g_setup:'Cambiar nombre o acceso', g_demo_load:'Cargar ejemplo (plano, carta y reservas)', g_demo_exit:'Salir del ejemplo', g_demo_q:'Esto agrega mesas, una carta y reservas de ejemplo. ¿Seguir?', g_yes:'Sí, cargar',
   ru_biz:'Nombre del restaurante', ru_big:'Grupo grande desde (personas)', ru_online:'Bloquear reservas en línea', ru_onmax:'Máximo por reserva en línea', ru_wmin:'Sin reserva: mínimo', ru_wmax:'Sin reserva: máximo', ru_dur:'Tiempo previsto en mesa (min)', ru_durbig:'… para grupos grandes (min)', ru_drink:'Aviso de bebidas tras (min, 0 = no)', ru_wait:'Aviso de espera larga tras (min)', ru_cur:'Moneda', ru_soon:'Mostrar mesa como reservada desde (min antes)', ru_online_note:'Las reglas en línea valen para la futura página de reservas; acá avisan cuando una reserva las supera.',
   m_hint:'Nombre y precio. Las bebidas van a la barra, lo demás a la cocina.', m_add:'+ Agregar a {0}', m_name:'Nombre', m_price:'Precio', cat_ent:'Entradas', cat_pri:'Principales', cat_pos:'Postres', cat_beb:'Bebidas',
-  l_hint:'Cada local tiene su propio plano, reservas y estadísticas. Las reglas y la carta valen para todos.', l_add:'+ Nuevo local', l_new:'Local {0}', l_copy:'Copiar plano de…', l_copied:'Plano copiado ({0} mesas).', l_copy_busy:'Primero vaciá el plano de este local (modo edición).', l_main:'Principal',
+  l_hint:'Cada local tiene su propio plano, reservas y estadísticas. Las reglas y la carta valen para todos.', l_add:'+ Nuevo local', l_new:'Local {0}', l_copy:'Copiar plano de…', l_copied:'Plano copiado ({0} mesas).', l_copy_busy:'Primero vaciá el plano de este local (modo edición).', l_main:'Principal', fl_default:'Salón', fl_new:'Piso {0}', fl_add:'Agregar piso', fl_name:'Nombre del piso', ph_fl:'Terraza, planta alta, patio…', fl_left:'← Mover a la izquierda', fl_right:'Mover a la derecha →', fl_del:'Eliminar piso', fl_del_full:'Primero mové las mesas de este piso a otro o eliminalas.', fl_deleted:'{0} eliminado.', fl_empty:'Este piso todavía no tiene mesas. Tocá <b>Editar plano</b> para agregarlas.', fl_hint:'Doble clic (o ✎ en modo edición) en una pestaña para renombrarla.', e_floor:'Piso',
   s_saving:'Guardando…', s_saved:'Guardado {0}', s_expired:'Token vencido: hay que renovarlo', s_later:'Sin conexión – se guarda después', s_offline:'Sin conexión', s_error:'Error {0} – tocá para ver', s_later_err:'Error {0} – no se guardó', s_demo:'Ejemplo (solo este dispositivo)', err_title:'Problema de sincronización', err_retry:'Reintentar', err_write:'El token puede leer pero no guardar: poné «Contents» en «Read and write» para el repositorio de datos.', today:'hoy', tomorrow:'mañana', yesterday:'ayer' },
 en: { locale:'en-US', title:'Floor', setup_sub:'Device setup', tab_code:'I have the code', tab_token:'First time (token)',
   name:'Your name', name_hint:'Saved with every table you open and every reservation.', code:'Access code', code_hint:'Whoever set up the app first has it (Settings → Share access).',
@@ -344,7 +353,7 @@ en: { locale:'en-US', title:'Floor', setup_sub:'Device setup', tab_code:'I have 
   g_dev:'Device of <b>{0}</b>', g_data:'Data in {0}', g_demo:'Sample mode: the data stays on this device only.', language:'Language', g_rules:'Settings and rules', g_menu:'Menu', g_locs:'Locations', g_share:'Share access (code)', g_sync:'Sync now', g_setup:'Change name or access', g_demo_load:'Load sample (floor plan, menu, bookings)', g_demo_exit:'Leave the sample', g_demo_q:'This adds sample tables, a menu and bookings. Continue?', g_yes:'Yes, load',
   ru_biz:'Restaurant name', ru_big:'Large party from (guests)', ru_online:'Block online bookings', ru_onmax:'Max per online booking', ru_wmin:'Walk-ins: minimum', ru_wmax:'Walk-ins: maximum', ru_dur:'Expected time at table (min)', ru_durbig:'… for large parties (min)', ru_drink:'Drinks alert after (min, 0 = off)', ru_wait:'Long wait alert after (min)', ru_cur:'Currency', ru_soon:'Show table as reserved from (min before)', ru_online_note:'The online rules apply to the future booking page; here they warn when a booking exceeds them.',
   m_hint:'Name and price. Drinks go to the bar, everything else to the kitchen.', m_add:'+ Add to {0}', m_name:'Name', m_price:'Price', cat_ent:'Starters', cat_pri:'Mains', cat_pos:'Desserts', cat_beb:'Drinks',
-  l_hint:'Each location has its own floor plan, bookings and stats. Rules and menu apply to all.', l_add:'+ New location', l_new:'Location {0}', l_copy:'Copy floor plan from…', l_copied:'Floor plan copied ({0} tables).', l_copy_busy:'First empty this location’s floor plan (edit mode).', l_main:'Main',
+  l_hint:'Each location has its own floor plan, bookings and stats. Rules and menu apply to all.', l_add:'+ New location', l_new:'Location {0}', l_copy:'Copy floor plan from…', l_copied:'Floor plan copied ({0} tables).', l_copy_busy:'First empty this location’s floor plan (edit mode).', l_main:'Main', fl_default:'Main room', fl_new:'Floor {0}', fl_add:'Add floor', fl_name:'Floor name', ph_fl:'Terrace, upstairs, patio…', fl_left:'← Move left', fl_right:'Move right →', fl_del:'Delete floor', fl_del_full:'First move this floor’s tables to another floor or delete them.', fl_deleted:'{0} deleted.', fl_empty:'This floor has no tables yet. Tap <b>Edit floor plan</b> to add them.', fl_hint:'Double-click a tab (or ✎ in edit mode) to rename it.', e_floor:'Floor',
   s_saving:'Saving…', s_saved:'Saved {0}', s_expired:'Token expired: it must be renewed', s_later:'Offline – will save later', s_offline:'Offline', s_error:'Error {0} – tap to see', s_later_err:'Error {0} – not saved', s_demo:'Sample (this device only)', err_title:'Sync problem', err_retry:'Retry', err_write:'The token can read but not save: set “Contents” to “Read and write” for the data repository.', today:'today', tomorrow:'tomorrow', yesterday:'yesterday' },
 de: { locale:'de-DE', title:'Saal', setup_sub:'Gerät einrichten', tab_code:'Ich habe den Code', tab_token:'Erstes Mal (Token)',
   name:'Dein Name', name_hint:'Wird bei jedem geöffneten Tisch und jeder Reservierung gespeichert.', code:'Zugangscode', code_hint:'Hat, wer die App zuerst eingerichtet hat (Einstellungen → Zugang teilen).',
@@ -376,7 +385,7 @@ de: { locale:'de-DE', title:'Saal', setup_sub:'Gerät einrichten', tab_code:'Ich
   g_dev:'Gerät von <b>{0}</b>', g_data:'Daten in {0}', g_demo:'Beispielmodus: die Daten bleiben nur auf diesem Gerät.', language:'Sprache', g_rules:'Einstellungen und Regeln', g_menu:'Karte', g_locs:'Lokale', g_share:'Zugang teilen (Code)', g_sync:'Jetzt synchronisieren', g_setup:'Name oder Zugang ändern', g_demo_load:'Beispiel laden (Plan, Karte, Reservierungen)', g_demo_exit:'Beispiel verlassen', g_demo_q:'Das fügt Beispieltische, eine Karte und Reservierungen hinzu. Weiter?', g_yes:'Ja, laden',
   ru_biz:'Name des Restaurants', ru_big:'Große Gruppe ab (Personen)', ru_online:'Online-Reservierungen sperren', ru_onmax:'Höchstens pro Online-Reservierung', ru_wmin:'Ohne Reservierung: mindestens', ru_wmax:'Ohne Reservierung: höchstens', ru_dur:'Geplante Zeit am Tisch (Min.)', ru_durbig:'… für große Gruppen (Min.)', ru_drink:'Getränke-Hinweis nach (Min., 0 = aus)', ru_wait:'Hinweis lange Wartezeit nach (Min.)', ru_cur:'Währung', ru_soon:'Tisch als reserviert zeigen ab (Min. vorher)', ru_online_note:'Die Online-Regeln gelten für die spätere Reservierungsseite; hier warnen sie, wenn eine Reservierung sie überschreitet.',
   m_hint:'Name und Preis. Getränke gehen an die Bar, alles andere an die Küche.', m_add:'+ Zu {0} hinzufügen', m_name:'Name', m_price:'Preis', cat_ent:'Vorspeisen', cat_pri:'Hauptgerichte', cat_pos:'Desserts', cat_beb:'Getränke',
-  l_hint:'Jedes Lokal hat eigenen Plan, Reservierungen und Statistik. Regeln und Karte gelten für alle.', l_add:'+ Neues Lokal', l_new:'Lokal {0}', l_copy:'Plan kopieren von…', l_copied:'Plan kopiert ({0} Tische).', l_copy_busy:'Leere zuerst den Plan dieses Lokals (Bearbeiten).', l_main:'Hauptlokal',
+  l_hint:'Jedes Lokal hat eigenen Plan, Reservierungen und Statistik. Regeln und Karte gelten für alle.', l_add:'+ Neues Lokal', l_new:'Lokal {0}', l_copy:'Plan kopieren von…', l_copied:'Plan kopiert ({0} Tische).', l_copy_busy:'Leere zuerst den Plan dieses Lokals (Bearbeiten).', l_main:'Hauptlokal', fl_default:'Hauptraum', fl_new:'Etage {0}', fl_add:'Etage hinzufügen', fl_name:'Name der Etage', ph_fl:'Terrasse, Obergeschoss, Innenhof…', fl_left:'← Nach links', fl_right:'Nach rechts →', fl_del:'Etage löschen', fl_del_full:'Verschiebe die Tische dieser Etage zuerst auf eine andere oder lösche sie.', fl_deleted:'{0} gelöscht.', fl_empty:'Diese Etage hat noch keine Tische. Tippe auf <b>Plan bearbeiten</b>, um welche anzulegen.', fl_hint:'Doppelklick auf einen Tab (oder ✎ im Bearbeiten-Modus) zum Umbenennen.', e_floor:'Etage',
   s_saving:'Speichert…', s_saved:'Gespeichert {0}', s_expired:'Token abgelaufen: muss erneuert werden', s_later:'Offline – wird später gespeichert', s_offline:'Offline', s_error:'Fehler {0} – antippen', s_later_err:'Fehler {0} – nicht gespeichert', s_demo:'Beispiel (nur dieses Gerät)', err_title:'Problem beim Synchronisieren', err_retry:'Nochmal', err_write:'Der Token kann lesen, aber nicht speichern: „Contents“ für das Daten-Repository auf „Read and write“ stellen.', today:'heute', tomorrow:'morgen', yesterday:'gestern' }
 };
 var lang = store.get(KEY.lang, null);
@@ -424,6 +433,7 @@ var money = function(n){ return (S().cur || '$') + ' ' + Math.round(n || 0).toLo
    data: id -> record with kind k:
    set  settings (id 'set')     loc  location: n, o
    tbl  table: loc, n, sh (round/sq/rect), x, y, w, h (floor = 1000 × 640), min, max, j (join id; same j = joined)
+   flr  floor of a location (tab above the plan): loc, n, o; a table's fl says which floor it is on (none = the first)
    menu dish: n, p (price), cat (ent/pri/pos/beb), o
    res  booking or waitlist: loc, d, a (HH:MM), n, p, tel, src (tel/walk/web), tb (table id), dep, alg, note, tags[], st ('' / seated / noshow / cancel / wait), at (waitlist since), nt (notified), v (visit)
    visit a seated table: loc, tb [table ids], p, n, res, a (seated ms), end, cl (cleaned ms), bill (ms), dk (drinks checked ms), note, by, it {id → {id, m, n, p, q, seat, cat, s (0 new · 1 sent · 2 served), t, by, del}}
@@ -571,6 +581,19 @@ $('#sDemo').onclick = function(){
 /* ---------- tables, units and their state ----------
    A unit is one table or several joined tables (same j). Seats and party limits add up. */
 var tables = function(){ return here('tbl'); };
+/* floors: tabs above the plan (Salón, Terraza, Planta alta…). Without any, the location has one implicit floor.
+   A table without a valid fl is on the first floor, so nothing has to be migrated when floors are added. */
+function floors(){
+  var l = here('flr').sort(function(a, b){ return (a.o || 0) - (b.o || 0) || natural(a.n, b.n); });
+  return l.length ? l : [{ id: 'f0-' + curLoc, k: 'flr', loc: curLoc, n: t('fl_default'), o: 0, implicit: true }];
+}
+function floorOf(x){ var fs = floors(); return x && x.fl && fs.some(function(f){ return f.id === x.fl; }) ? x.fl : fs[0].id; }
+function curFl(){ var fs = floors(), id = store.get(P + 'floor.' + curLoc, ''); return fs.some(function(f){ return f.id === id; }) ? id : fs[0].id; }
+function setFl(id){ store.set(P + 'floor.' + curLoc, id); }
+var flName = function(id){ var f = floors().filter(function(f){ return f.id === id; })[0]; return f ? f.n : ''; };
+var onFloor = function(u, f){ return floorOf(u.tbs[0]) === (f || curFl()); };
+var floorTables = function(){ var f = curFl(); return tables().filter(function(x){ return floorOf(x) === f; }); };
+function realFloor(f){ if(!f.implicit) return f; var x = copy(f); delete x.implicit; return x; }
 var tableById = function(id){ var x = data[id]; return x && !x.del && x.k === 'tbl' ? x : null; };
 function units(){
   var g = {};
@@ -682,9 +705,10 @@ function tileText(u, s){
   return name + '<small>' + esc(t(u.max === 1 ? 'seats1' : 'seats', u.max)) + '</small>';
 }
 function renderFloor(){
-  var el = $('#vFloor'), us = units(), now = Date.now(), sc = {}, html = '';
+  var el = $('#vFloor'), all = units(), us = all.filter(function(u){ return onFloor(u); }), now = Date.now(), sc = {}, html = '', fs = floors(), cf = curFl();
   var covers = here('visit').filter(function(v){ return iso(new Date(v.a)) === todayIso(); }).reduce(function(s, v){ return s + (+v.p || 0); }, 0);
-  var states = {}; us.forEach(function(u){ var s = state(u); states[u.key] = s; sc[s.st] = (sc[s.st] || 0) + 1; });
+  var states = {}; all.forEach(function(u){ var s = state(u); states[u.key] = s; sc[s.st] = (sc[s.st] || 0) + 1; });
+  var hot = function(u){ var s = states[u.key]; return s.st === 'bill' || (s.st === 'eat' && (now - s.v.a) / MIN > durFor(s.v.p)); };
   if(floorMode === 'live'){
     var al = alerts();
     html += '<div class="fbar"><div class="kpis"><span class="kpi">' + esc(t('k_free')) + ' <b>' + (sc.free || 0) + '</b></span><span class="kpi">' + esc(t('k_eat')) + ' <b>' + ((sc.eat || 0) + (sc.bill || 0)) + '</b></span><span class="kpi">' + esc(t('k_covers', covers)) + '</span></div><span class="sp"></span>' +
@@ -693,9 +717,13 @@ function renderFloor(){
   } else if(floorMode === 'edit'){
     html += '<div class="ebar"><b>' + esc(t('e_title')) + '</b><button class="btn sm" type="button" data-addt="round"><i class="shp round"></i>' + esc(t('e_add_round')) + '</button><button class="btn sm" type="button" data-addt="sq"><i class="shp sq"></i>' + esc(t('e_add_sq')) + '</button><button class="btn sm" type="button" data-addt="rect"><i class="shp rect"></i>' + esc(t('e_add_rect')) + '</button><button class="btn sm primary" type="button" id="eDone">' + esc(t('e_done')) + '</button></div>';
   } else {
-    var picked = tables().filter(function(x){ return joinPick[x.id]; });
+    var picked = floorTables().filter(function(x){ return joinPick[x.id]; });
     html += '<div class="ebar"><b>' + esc(picked.length ? t('j_sel', picked.length, picked.reduce(function(s, x){ return s + (+x.max || 0); }, 0)) : t('j_hint')) + '</b><button class="btn sm" type="button" id="jCancel">' + esc(t('cancel')) + '</button><button class="btn sm primary" type="button" id="jGo"' + (picked.length < 2 ? ' disabled' : '') + '>' + esc(t('j_go')) + '</button></div>';
   }
+  html += '<div class="ftabs" id="ftabs" role="tablist">' + fs.map(function(f){
+    var uu = all.filter(function(u){ return onFloor(u, f.id); }), busy = uu.filter(function(u){ return /eat|bill/.test(states[u.key].st); }).length;
+    return '<button type="button" role="tab" class="ftab' + (f.id === cf ? ' on' : '') + '" data-fl="' + esc(f.id) + '" aria-selected="' + (f.id === cf) + '">' + (floorMode === 'live' && f.id !== cf && uu.some(hot) ? '<i class="dot"></i>' : '') + '<span class="fn">' + esc(f.n) + '</span>' + (uu.length && floorMode !== 'edit' ? '<span class="n">' + busy + '/' + uu.length + '</span>' : '') + (floorMode === 'edit' && f.id === cf ? '<span class="ed" data-fled="1">✎</span>' : '') + '</button>';
+  }).join('') + (floorMode === 'join' ? '' : '<button type="button" class="ftab add" id="flAdd" title="' + esc(t('fl_add')) + '" aria-label="' + esc(t('fl_add')) + '">+</button>') + '</div>';
   html += '<div class="floorwrap"><div class="floor ' + (floorMode === 'live' ? '' : floorMode) + '" id="floor">';
   if(floorMode !== 'edit') us.filter(function(u){ return u.ids.length > 1; }).forEach(function(u){
     var x0 = Math.min.apply(null, u.tbs.map(function(x){ return x.x; })) - 10, y0 = Math.min.apply(null, u.tbs.map(function(x){ return x.y; })) - 10;
@@ -714,16 +742,21 @@ function renderFloor(){
     });
   });
   html += '</div></div>';
-  if(!us.length && floorMode === 'live') html += '<p class="empty" style="margin-top:10px">' + t('f_empty') + '</p>';
-  if(floorMode === 'edit') html += '<div class="card epanel" id="ePanel">' + editPanel() + '</div><p class="hint">' + esc(t('e_hint')) + '</p>';
+  if(!us.length && floorMode === 'live') html += '<p class="empty" style="margin-top:10px">' + t(tables().length ? 'fl_empty' : 'f_empty') + '</p>';
+  if(floorMode === 'edit') html += '<div class="card epanel" id="ePanel">' + editPanel() + '</div><p class="hint">' + esc(t('e_hint')) + ' ' + esc(t('fl_hint')) + '</p>';
   if(floorMode === 'live') html += '<div class="legend">' + ['free', 'res', 'eat', 'bill', 'clean'].map(function(k){ return '<span><i class="st-' + k + '"></i>' + esc(t('st_' + k)) + '</span>'; }).join('') + '</div>';
   el.innerHTML = html;
   var fl = $('#floor', el);
   fl.addEventListener('pointerdown', floorDown);
+  $$('[data-fl]', el).forEach(function(b){
+    b.onclick = function(e){ var f = floors().filter(function(x){ return x.id === b.dataset.fl; })[0]; if(e.target.closest('[data-fled]')) return floorSheet(f); if(b.dataset.fl === curFl()) return; setFl(b.dataset.fl); selTable = null; joinPick = {}; render(); };
+    b.ondblclick = function(){ floorSheet(floors().filter(function(x){ return x.id === b.dataset.fl; })[0]); };
+  });
+  var fa = $('#flAdd', el); if(fa) fa.onclick = addFloor;
   if(floorMode === 'live'){
     $('#fEdit', el).onclick = function(){ floorMode = 'edit'; selTable = null; render(); };
     $('#fJoin', el).onclick = function(){ floorMode = 'join'; joinPick = {}; render(); };
-    $$('.al', el).forEach(function(b){ b.onclick = function(){ if(b.dataset.u) openUnit(b.dataset.u); else if(b.dataset.w) waitSheet(data[b.dataset.w]); else if(b.dataset.r) editRes(data[b.dataset.r]); }; });
+    $$('.al', el).forEach(function(b){ b.onclick = function(){ if(b.dataset.u){ var au = unitByKey(b.dataset.u); if(au && !onFloor(au)){ setFl(floorOf(au.tbs[0])); render(); } openUnit(b.dataset.u); } else if(b.dataset.w) waitSheet(data[b.dataset.w]); else if(b.dataset.r) editRes(data[b.dataset.r]); }; });
   } else if(floorMode === 'edit'){
     $('#eDone', el).onclick = function(){ floorMode = 'live'; selTable = null; render(); };
     $$('[data-addt]', el).forEach(function(b){ b.onclick = function(){ addTable(b.dataset.addt); }; });
@@ -775,13 +808,13 @@ function floorDown(e){
   var up4 = function(){
     removeEventListener('pointermove', mv2); removeEventListener('pointerup', up4); removeEventListener('pointercancel', up4); drag = { on: false };
     var r = box._r; close(box);
-    if(r && r.w > 10 && r.h > 10) tables().forEach(function(tb){ if(tb.x < r.x + r.w && tb.x + tb.w > r.x && tb.y < r.y + r.h && tb.y + tb.h > r.y) unitOf(tb.id).ids.forEach(function(id){ joinPick[id] = 1; }); });
+    if(r && r.w > 10 && r.h > 10) floorTables().forEach(function(tb){ if(tb.x < r.x + r.w && tb.x + tb.w > r.x && tb.y < r.y + r.h && tb.y + tb.h > r.y) unitOf(tb.id).ids.forEach(function(id){ joinPick[id] = 1; }); });
     render();
   };
   addEventListener('pointermove', mv2); addEventListener('pointerup', up4); addEventListener('pointercancel', up4);
 }
 function doJoin(){
-  var ids = Object.keys(joinPick).filter(function(id){ return tableById(id) && (data[id].loc || 'main') === curLoc; });
+  var ids = Object.keys(joinPick).filter(function(id){ return tableById(id) && (data[id].loc || 'main') === curLoc && floorOf(data[id]) === curFl(); });
   if(ids.length < 2) return toast(t('j_need'));
   var busy = openVisits().filter(function(v){ return (v.tb || []).some(function(id){ return ids.indexOf(id) >= 0; }); });
   if(busy.length > 1) return toast(t('j_busy'));
@@ -795,22 +828,58 @@ function splitUnit(u){
   touch(u.tbs.map(function(x){ x.j = ''; return x; }));
   toast(t('j_splitted'), t('undo'), function(){ touch(before.map(function(b){ var x = data[b.id]; x.j = b.j; return x; })); });
 }
+function addFloor(){
+  var fs = floors(), list = [];
+  if(fs[0].implicit) list.push(realFloor(fs[0]));
+  var f = { id: uid(), k: 'flr', loc: curLoc, n: t('fl_new', fs.length + 1), o: Math.max.apply(null, fs.map(function(x){ return x.o || 0; })) + 1 };
+  list.push(f); setFl(f.id); selTable = null; joinPick = {}; if(floorMode === 'join') floorMode = 'live';
+  touch(list); floorSheet(data[f.id], true);
+}
+/* rename, reorder, delete a floor; saves when closed */
+function floorSheet(f, isNew){
+  if(!f) return;
+  var fs = floors(), i = fs.map(function(x){ return x.id; }).indexOf(f.id), n = tables().filter(function(x){ return floorOf(x) === f.id; }).length;
+  modal('<h3>' + esc(f.n) + '</h3><div class="field"><label for="flN">' + esc(t('fl_name')) + '</label><input id="flN" value="' + esc(isNew ? '' : f.n) + '" placeholder="' + esc(isNew ? f.n : t('ph_fl')) + '"></div>' +
+    (fs.length > 1 ? '<div class="row2" style="margin-bottom:10px"><button class="btn sm" id="flL" type="button"' + (i <= 0 ? ' disabled' : '') + '>' + esc(t('fl_left')) + '</button><button class="btn sm" id="flR" type="button"' + (i >= fs.length - 1 ? ' disabled' : '') + '>' + esc(t('fl_right')) + '</button></div>' : '') +
+    '<div id="flMsg"></div><div class="row2">' + (fs.length > 1 ? '<button class="btn danger" id="flDel" type="button">' + esc(t('fl_del')) + '</button>' : '') + '<button class="btn primary" data-close type="button">' + esc(t('done')) + '</button></div>', function(el){
+    var inp = $('#flN', el); setTimeout(function(){ inp.focus(); if(!isNew) inp.select(); }, 50);
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter') tryClose(el); });
+    var move = function(d){
+      var list = floors().map(realFloor), j = i + d; if(j < 0 || j >= list.length) return;
+      el._save(); close(el);
+      var a = list[i]; list[i] = list[j]; list[j] = a; list.forEach(function(x, k){ x.o = k; });
+      touch(list); floorSheet(data[f.id]);
+    };
+    var l = $('#flL', el), r = $('#flR', el); if(l) l.onclick = function(){ move(-1); }; if(r) r.onclick = function(){ move(1); };
+    var del = $('#flDel', el); if(del) del.onclick = function(){
+      if(n){ $('#flMsg', el).innerHTML = '<div class="msg err" style="margin:0 0 10px">' + esc(t('fl_del_full')) + '</div>'; return; }
+      var x = data[f.id]; close(el); if(!x) return;
+      x.del = true; setFl(''); touch(x);
+      toast(t('fl_deleted', x.n), t('undo'), function(){ x.del = false; setFl(x.id); touch(x); });
+    };
+    el._save = function(){
+      var name = inp.value.trim(); if(!name || name === f.n) return true;
+      var x = realFloor(data[f.id] || f); x.n = name; touch(x); return true;
+    };
+  });
+}
 function nextName(){ var n = 0; tables().forEach(function(x){ var m = String(x.n).match(/(\d+)\s*$/); if(m) n = Math.max(n, +m[1]); }); return 'T' + (n + 1); }
 function freeSpot(w, h, sx, sy){
-  var hit = function(x, y){ return tables().some(function(o){ return x < o.x + o.w + 20 && x + w + 20 > o.x && y < o.y + o.h + 20 && y + h + 20 > o.y; }); };
+  var hit = function(x, y){ return floorTables().some(function(o){ return x < o.x + o.w + 20 && x + w + 20 > o.x && y < o.y + o.h + 20 && y + h + 20 > o.y; }); };
   for(var y = sy || 30; y <= H - h; y += 20) for(var x = (y === (sy || 30) ? sx || 30 : 30); x <= W - w; x += 20) if(!hit(x, y)) return { x: x, y: y };
   return { x: 30, y: 30 };
 }
 var SHAPES = { round: { w: 100, h: 100, min: 1, max: 2 }, sq: { w: 110, h: 110, min: 2, max: 4 }, rect: { w: 200, h: 110, min: 4, max: 6 } };
 function addTable(sh){
   var d = SHAPES[sh], p = freeSpot(d.w, d.h);
-  var x = { id: uid(), k: 'tbl', loc: curLoc, n: nextName(), sh: sh, x: p.x, y: p.y, w: d.w, h: d.h, min: d.min, max: d.max };
+  var x = { id: uid(), k: 'tbl', loc: curLoc, fl: floors()[0].implicit ? '' : curFl(), n: nextName(), sh: sh, x: p.x, y: p.y, w: d.w, h: d.h, min: d.min, max: d.max };
   selTable = x.id; touch(x);
 }
 function editPanel(){
   var x = selTable && tableById(selTable);
   if(!x) return '<p class="hint" style="margin:0">' + esc(t('e_pick')) + '</p>';
   return '<div class="grid3"><div class="field"><label for="eN">' + esc(t('e_name')) + '</label><input id="eN" value="' + esc(x.n) + '"></div><div class="field"><label for="eMin">' + esc(t('e_min')) + '</label><input id="eMin" type="number" min="1" inputmode="numeric" value="' + (+x.min) + '"></div><div class="field"><label for="eMax">' + esc(t('e_max')) + '</label><input id="eMax" type="number" min="1" inputmode="numeric" value="' + (+x.max) + '"></div></div>' +
+    (floors().length > 1 ? '<div class="field"><label for="eFl">' + esc(t('e_floor')) + '</label><select id="eFl">' + floors().map(function(f){ return '<option value="' + esc(f.id) + '"' + (f.id === floorOf(x) ? ' selected' : '') + '>' + esc(f.n) + '</option>'; }).join('') + '</select></div>' : '') +
     '<div class="seg" style="margin-bottom:12px">' + ['round', 'sq', 'rect'].map(function(s){ return '<button type="button" data-sh="' + s + '"' + (x.sh === s ? ' class="on"' : '') + '><i class="shp ' + s + '"></i>' + esc(t('e_add_' + s)) + '</button>'; }).join('') + '</div>' +
     '<div id="eMsg"></div><div class="row2"><button class="btn danger" id="eDel" type="button">' + esc(t('e_del')) + '</button><button class="btn" id="eDup" type="button">' + esc(t('e_dup')) + '</button></div>';
 }
@@ -823,6 +892,13 @@ function wirePanel(){
   };
   ['#eN', '#eMin', '#eMax'].forEach(function(s){ $(s, el).addEventListener('change', save); $(s, el).addEventListener('keydown', function(e){ if(e.key === 'Enter') this.blur(); }); });
   $$('[data-sh]', el).forEach(function(b){ b.onclick = function(){ var sh = b.dataset.sh; x.sh = sh; if(sh !== 'rect'){ var m = Math.min(x.w, x.h); x.w = x.h = m; } else if(x.w < x.h * 1.5) x.w = Math.min(W - x.x, Math.round(x.h * 1.8 / 10) * 10); touch(x); }; });
+  var efl = $('#eFl', el); if(efl) efl.onchange = function(){
+    var to = efl.value; if(to === floorOf(x)) return;
+    var u = unitOf(x.id), list = [x];
+    if(u && u.ids.length > 1) u.tbs.forEach(function(o){ o.j = ''; if(o !== x) list.push(o); });   /* joined tables stay on one floor */
+    var keep = curFl(); setFl(to); var p = freeSpot(x.w, x.h, x.x, x.y); setFl(keep);
+    x.fl = to; x.x = p.x; x.y = p.y; selTable = null; touch(list); toast(t('t_moved', flName(to)));
+  };
   $('#eDup', el).onclick = function(){ var p = freeSpot(x.w, x.h, x.x, x.y); var y = copy(x); y.id = uid(); y.n = nextName(); y.x = p.x; y.y = p.y; y.j = ''; selTable = y.id; touch(y); };
   $('#eDel', el).onclick = function(){
     var u = unitOf(x.id); if(u && visitOf(u)) return toast(t('e_busy'));
@@ -965,7 +1041,7 @@ function pickUnit(p, start, exceptRes, cb, skipKey){
     .sort(function(a, b){ return (isBest(a.u) ? -1 : isBest(b.u) ? 1 : 0) || (!!a.b - !!b.b) || (b.fit - a.fit) || a.u.max - b.u.max || natural(a.u.n, b.u.n); });
   modal('<h3>' + esc(t('p_title')) + ' · ' + p + '</h3>' + (best ? '' : '<p class="msg warn">' + esc(t('p_none', p)) + '</p>') + '<ul class="ulist">' + list.map(function(o){
     var busy = o.b && (o.b.v ? t('p_busy') : o.b.r ? t('p_resv', o.b.r.a + ' ' + o.b.r.n) : t('st_clean'));
-    return '<li data-k="' + esc(o.u.key) + '" class="' + (isBest(o.u) ? 'best' : '') + (o.b && o.b.v ? ' off' : '') + '"><b>' + esc(o.u.n) + '</b><span>' + esc(t('seats', o.u.max)) + (busy ? ' · ' + esc(busy) : '') + '</span>' + (isBest(o.u) ? '<span class="tag tt">' + esc(t('p_best')) + '</span>' : '') + '</li>';
+    return '<li data-k="' + esc(o.u.key) + '" class="' + (isBest(o.u) ? 'best' : '') + (o.b && o.b.v ? ' off' : '') + '"><b>' + esc(o.u.n) + '</b><span>' + esc(t('seats', o.u.max)) + (floors().length > 1 ? ' · ' + esc(flName(floorOf(o.u.tbs[0]))) : '') + (busy ? ' · ' + esc(busy) : '') + '</span>' + (isBest(o.u) ? '<span class="tag tt">' + esc(t('p_best')) + '</span>' : '') + '</li>';
   }).join('') + '</ul><div class="row2" style="margin-top:12px"><button class="btn" data-discard type="button">' + esc(t('cancel')) + '</button></div>', function(el){
     $$('li[data-k]', el).forEach(function(li){ li.onclick = function(){ if(li.classList.contains('off')) return; var u = unitByKey(li.dataset.k); close(el); cb(u); }; });
   });
@@ -1241,9 +1317,10 @@ function locEditor(){
     $('#lAdd', b).onclick = function(){ ensure(); var n = live('loc').length + 1, x = { id: uid(), k: 'loc', n: t('l_new', n), o: n }; touch(x); draw(); };
     $$('[data-copy]', b).forEach(function(btn){ btn.onclick = function(){
       if(tables().length) return toast(t('l_copy_busy'));
-      var src = live('tbl').filter(function(x){ return (x.loc || 'main') === btn.dataset.copy; }), jm = {};
-      var list = src.map(function(x){ var y = copy(x); y.id = uid(); y.loc = curLoc; if(x.j){ jm[x.j] = jm[x.j] || uid(); y.j = jm[x.j]; } return y; });
-      touch(list); toast(t('l_copied', list.length));
+      var src = live('tbl').filter(function(x){ return (x.loc || 'main') === btn.dataset.copy; }), jm = {}, fm = {}, list = [];
+      if(!here('flr').length) live('flr').filter(function(f){ return (f.loc || 'main') === btn.dataset.copy; }).forEach(function(f){ var g = copy(f); g.id = uid(); g.loc = curLoc; fm[f.id] = g.id; list.push(g); });
+      src.forEach(function(x){ var y = copy(x); y.id = uid(); y.loc = curLoc; y.fl = fm[x.fl] || ''; if(x.j){ jm[x.j] = jm[x.j] || uid(); y.j = jm[x.j]; } list.push(y); });
+      touch(list); toast(t('l_copied', src.length));
     }; });
   };
   draw();
@@ -1255,11 +1332,12 @@ function confirmBox(text, okLabel, fn){
 /* ---------- sample data: a small restaurant with a month of history ---------- */
 function loadSample(){
   var L = curLoc, now = Date.now(), add = function(x){ x.t = now; data[x.id] = x; return x; };
-  var T = {};
+  var T = {}, FS = add({ id: uid(), k: 'flr', loc: L, n: 'Salón', o: 0 }), FT = add({ id: uid(), k: 'flr', loc: L, n: 'Terraza', o: 1 });
   [['T1', 'round', 40, 40, 100, 100, 1, 2], ['T2', 'sq', 190, 40, 110, 110, 2, 4], ['T3', 'sq', 350, 40, 110, 110, 2, 4], ['T4', 'rect', 510, 40, 200, 110, 4, 6], ['T5', 'round', 770, 40, 110, 110, 2, 4],
    ['T6', 'sq', 40, 230, 110, 110, 2, 4], ['T7', 'round', 210, 240, 100, 100, 1, 2], ['T8', 'rect', 380, 260, 200, 110, 4, 6], ['T9', 'rect', 600, 260, 200, 110, 2, 4],
-   ['T10', 'sq', 40, 460, 110, 110, 2, 4], ['T11', 'sq', 200, 460, 110, 110, 2, 4], ['T12', 'rect', 380, 460, 260, 120, 6, 10], ['B1', 'round', 760, 480, 90, 90, 1, 2], ['B2', 'round', 870, 480, 90, 90, 1, 2]
-  ].forEach(function(a){ T[a[0]] = add({ id: uid(), k: 'tbl', loc: L, n: a[0], sh: a[1], x: a[2], y: a[3], w: a[4], h: a[5], min: a[6], max: a[7] }); });
+   ['T10', 'sq', 40, 460, 110, 110, 2, 4], ['T11', 'sq', 200, 460, 110, 110, 2, 4], ['T12', 'rect', 380, 460, 260, 120, 6, 10], ['B1', 'round', 760, 480, 90, 90, 1, 2], ['B2', 'round', 870, 480, 90, 90, 1, 2],
+   ['T20', 'round', 60, 60, 110, 110, 2, 4, 1], ['T21', 'round', 240, 60, 110, 110, 2, 4, 1], ['T22', 'round', 420, 60, 110, 110, 2, 4, 1], ['T23', 'sq', 640, 50, 120, 120, 2, 4, 1], ['T24', 'rect', 60, 300, 220, 120, 4, 8, 1], ['T25', 'rect', 340, 300, 220, 120, 4, 8, 1], ['T26', 'sq', 640, 300, 120, 120, 2, 4, 1]
+  ].forEach(function(a){ T[a[0]] = add({ id: uid(), k: 'tbl', loc: L, fl: a[8] ? FT.id : FS.id, n: a[0], sh: a[1], x: a[2], y: a[3], w: a[4], h: a[5], min: a[6], max: a[7] }); });
   var j = uid(); T.T8.j = j; T.T9.j = j;
   var M = {};
   [['ent', 'Empanadas (2)', 4200], ['ent', 'Provoleta', 7800], ['ent', 'Burrata', 9600], ['pri', 'Pizza margherita', 11500], ['pri', 'Lubina', 19800], ['pri', 'Entrecot', 23500], ['pri', 'Ñoquis', 12800], ['pri', 'Milanesa napolitana', 15900],
@@ -1296,6 +1374,7 @@ function loadSample(){
   openV([T.T7.id], 2, ago(47), 'Sam', { dk: ago(40) });
   openV([T.T10.id], 4, ago(76), 'Maya', { bill: ago(3) });
   openV([T.T12.id], 8, ago(58), 'Leo');
+  openV([T.T21.id], 3, ago(22), 'Sam'); openV([T.T24.id], 6, ago(95), 'Ana', { bill: ago(2) });
   var v6 = add({ id: uid(), k: 'visit', loc: L, tb: [T.T6.id], p: 2, a: ago(80), end: ago(6), by: 'Ana', it: order(2, ago(80), 'Ana', true) }); v6.tot = visitTotal(v6);
   add({ id: uid(), k: 'res', loc: L, d: slot(20).d, a: slot(20).a, n: 'Alvarez', p: 2, tel: '+54 9 11 5555-0101', src: 'tel', tb: T.T2.id, st: '', tags: [] });
   add({ id: uid(), k: 'res', loc: L, d: slot(35).d, a: slot(35).a, n: 'Chen', p: 8, tel: '+54 9 11 5555-0102', src: 'web', tb: T.T8.id, dep: 20000, alg: 'Frutos secos', st: '', tags: ['bday'] });
