@@ -32,6 +32,13 @@ Ein Bildschirm für Tische, Reservierungen, Zeit am Tisch und Bestellungen. Aufg
   - Bei mehreren Lokalen ein Vergleich aller Lokale. Export als CSV.
 - **Ajustes y reglas:** Name des Restaurants, große Gruppe ab N, geplante Zeit am Tisch (normal / große Gruppe), Gruppen ohne Reservierung min/max (die App warnt, man kann trotzdem platzieren), Online-Reservierungen sperren und Höchstgröße online, Getränke- und Warte-Hinweise, Währung.
 - **Carta:** Gerichte mit Preis in Vorspeisen, Hauptgerichte, Desserts, Getränke.
+- **Karte importieren** (Carta → „Importar carta“):
+  - Excel (.xlsx), CSV oder Text hochladen bzw. hineinziehen, oder die Karte einfach einfügen, z. B. aus PDF, Word, Website oder WhatsApp.
+  - Jede Zeile mit Preis wird ein Gericht; Zeilen ohne Preis wie „ENTRADAS“ oder „BEBIDAS“ legen die Kategorie fest. Beschreibungszeilen werden übersprungen.
+  - Preise wie `$ 12.500`, `12.800,50` oder `9,50 €` werden erkannt. In Excel/CSV werden Spalten wie „Plato/Nombre“, „Precio“ und „Categoría/Rubro“ automatisch gefunden.
+  - Vorschau zum Korrigieren: Name, Preis und Kategorie lassen sich ändern, Zeilen entfernen.
+  - Gerichte, die schon auf der Karte stehen, bekommen den neuen Preis. Wahlweise ersetzt der Import die ganze Karte.
+  - Fotos und alte .xls-Dateien gehen nicht direkt: PDF kopieren und einfügen, .xls als .xlsx speichern.
 - **Locales:** mehrere Lokale mit eigenem Plan, eigenen Reservierungen und eigener Statistik; Regeln und Karte gelten für alle. Auswahl oben neben „+“. „Copiar plano de…“ übernimmt den Plan eines anderen Lokals samt Etagen.
 - **Beispiel zum Vorführen:** „Probar con datos de ejemplo“ im Einrichtungsbildschirm. Lädt ein Restaurant mit Salón (14 Tische) und Terraza (7 Tische), Karte, offenen Tischen, Reservierungen, Warteliste und 30 Tagen Verlauf. Bleibt nur auf dem Gerät, ohne GitHub.
 - Fenster speichern beim Schließen (daneben tippen, Escape, „Listo“); „Descartar“ verwirft. ES / EN / DE, offline-fähig, „Deshacer“ überall.

@@ -236,6 +236,18 @@ table.cmp td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:70
 .mlist input,.mlist select{padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);font-size:15px;min-width:0}
 .mlist input.n{flex:1} .mlist input.p{width:100px}
 .mlist button{border:1px solid var(--line);background:var(--card);border-radius:8px;width:36px;height:36px;cursor:pointer;flex:none;font-weight:800}
+.imp textarea{width:100%;min-height:150px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);font-size:15px;font-family:inherit;resize:vertical}
+.imp textarea:focus{outline:none;border-color:var(--accent)}
+.drop{display:block;border:2px dashed var(--line);border-radius:14px;padding:16px;text-align:center;cursor:pointer;color:var(--muted);font-weight:650;margin-bottom:12px}
+.drop.over,.drop:hover{border-color:var(--accent);color:var(--text)}
+.drop input{display:none}
+.prev{list-style:none;margin:0;padding:0;display:grid;gap:6px;max-height:46vh;overflow:auto}
+.prev li{display:flex;gap:6px;align-items:center}
+.prev input,.prev select{padding:7px 9px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);font-size:15px;min-width:0}
+.prev input.n{flex:1} .prev input.p{width:96px} .prev select{width:128px}
+.prev li.dup input.n{border-color:var(--blue)}
+.prev button{border:1px solid var(--line);background:var(--card);border-radius:8px;width:34px;height:34px;cursor:pointer;flex:none;font-weight:800}
+@media (max-width:560px){.prev li{flex-wrap:wrap} .prev input.n{flex:1 1 100%} .prev input.p{flex:1} .prev select{flex:1}}
 .rules .field{margin-bottom:10px}
 .rules .field input{max-width:140px}
 @media print{.hub,.top .icon,.fbar,.alerts{display:none}}
@@ -333,7 +345,7 @@ es: { locale:'es-AR', title:'Salón', setup_sub:'Configuración del dispositivo'
   csv:['Fecha', 'Local', 'Mesa', 'Personas', 'Desde', 'Hasta', 'Minutos', 'Total', 'Abrió', 'Reserva'],
   g_dev:'Dispositivo de <b>{0}</b>', g_data:'Datos en {0}', g_demo:'Modo ejemplo: los datos quedan solo en este dispositivo.', language:'Idioma', g_rules:'Ajustes y reglas', g_menu:'Carta', g_locs:'Locales', g_share:'Compartir acceso (código)', g_sync:'Sincronizar ahora', g_setup:'Cambiar nombre o acceso', g_demo_load:'Cargar ejemplo (plano, carta y reservas)', g_demo_exit:'Salir del ejemplo', g_demo_q:'Esto agrega mesas, una carta y reservas de ejemplo. ¿Seguir?', g_yes:'Sí, cargar',
   ru_biz:'Nombre del restaurante', ru_big:'Grupo grande desde (personas)', ru_online:'Bloquear reservas en línea', ru_onmax:'Máximo por reserva en línea', ru_wmin:'Sin reserva: mínimo', ru_wmax:'Sin reserva: máximo', ru_dur:'Tiempo previsto en mesa (min)', ru_durbig:'… para grupos grandes (min)', ru_drink:'Aviso de bebidas tras (min, 0 = no)', ru_wait:'Aviso de espera larga tras (min)', ru_cur:'Moneda', ru_soon:'Mostrar mesa como reservada desde (min antes)', ru_online_note:'Las reglas en línea valen para la futura página de reservas; acá avisan cuando una reserva las supera.',
-  m_hint:'Nombre y precio. Las bebidas van a la barra, lo demás a la cocina.', m_add:'+ Agregar a {0}', m_name:'Nombre', m_price:'Precio', cat_ent:'Entradas', cat_pri:'Principales', cat_pos:'Postres', cat_beb:'Bebidas',
+  m_import:'Importar carta', i_title:'Importar carta', i_file:'Elegí un archivo (Excel, CSV o texto) o arrastralo acá', i_or:'… o pegá la carta (copiada de un PDF, Word, la web o WhatsApp):', i_ph:'ENTRADAS\nEmpanadas (2) ........ $4.200\nProvoleta  7800\n\nBEBIDAS\nAgua 2600', i_read:'Leer', i_hint:'Cada línea con un precio es un plato. Las líneas sin precio (ENTRADAS, BEBIDAS, POSTRES…) indican la categoría. PDF: abrilo, seleccioná todo, copiá y pegalo acá. Fotos todavía no.', i_found:'{0} platos encontrados. Revisalos antes de importar:', i_none:'No encontré platos con precio. Probá con una línea por plato y el precio al final.', i_dup:'Los marcados en azul ya están en la carta: se actualiza el precio.', i_replace:'Reemplazar la carta actual (borra los platos que no estén en la lista)', i_go:'Importar {0} platos', i_done:'{0} platos importados.', i_back:'Volver', i_err:'No pude leer ese archivo. Guardalo como .xlsx o .csv, o copiá y pegá el contenido.', m_hint:'Nombre y precio. Las bebidas van a la barra, lo demás a la cocina.', m_add:'+ Agregar a {0}', m_name:'Nombre', m_price:'Precio', cat_ent:'Entradas', cat_pri:'Principales', cat_pos:'Postres', cat_beb:'Bebidas',
   l_hint:'Cada local tiene su propio plano, reservas y estadísticas. Las reglas y la carta valen para todos.', l_add:'+ Nuevo local', l_new:'Local {0}', l_copy:'Copiar plano de…', l_copied:'Plano copiado ({0} mesas).', l_copy_busy:'Primero vaciá el plano de este local (modo edición).', l_main:'Principal', fl_default:'Salón', fl_new:'Piso {0}', fl_add:'Agregar piso', fl_name:'Nombre del piso', ph_fl:'Terraza, planta alta, patio…', fl_left:'← Mover a la izquierda', fl_right:'Mover a la derecha →', fl_del:'Eliminar piso', fl_del_full:'Primero mové las mesas de este piso a otro o eliminalas.', fl_deleted:'{0} eliminado.', fl_empty:'Este piso todavía no tiene mesas. Tocá <b>Editar plano</b> para agregarlas.', fl_hint:'Doble clic (o ✎ en modo edición) en una pestaña para renombrarla.', e_floor:'Piso', alg_other:'Otra alergia…', alg_add:'Agregar', alg_hint:'Tocá para marcar. Si no está, escribila abajo: queda guardada para la próxima.', al_gluten:'Gluten (TACC)', al_dairy:'Lácteos', al_egg:'Huevo', al_peanut:'Maní', al_nuts:'Frutos secos', al_fish:'Pescado', al_shell:'Crustáceos', al_mollusc:'Moluscos', al_soy:'Soja', al_sesame:'Sésamo', al_mustard:'Mostaza', al_celery:'Apio', al_sulfite:'Sulfitos', al_lupin:'Altramuz', fl_free:'{0} libres',
   s_saving:'Guardando…', s_saved:'Guardado {0}', s_expired:'Token vencido: hay que renovarlo', s_later:'Sin conexión – se guarda después', s_offline:'Sin conexión', s_error:'Error {0} – tocá para ver', s_later_err:'Error {0} – no se guardó', s_demo:'Ejemplo (solo este dispositivo)', err_title:'Problema de sincronización', err_retry:'Reintentar', err_write:'El token puede leer pero no guardar: poné «Contents» en «Read and write» para el repositorio de datos.', today:'hoy', tomorrow:'mañana', yesterday:'ayer' },
 en: { locale:'en-US', title:'Floor', setup_sub:'Device setup', tab_code:'I have the code', tab_token:'First time (token)',
@@ -365,7 +377,7 @@ en: { locale:'en-US', title:'Floor', setup_sub:'Device setup', tab_code:'I have 
   csv:['Date', 'Location', 'Table', 'Guests', 'From', 'To', 'Minutes', 'Total', 'Opened by', 'Booking'],
   g_dev:'Device of <b>{0}</b>', g_data:'Data in {0}', g_demo:'Sample mode: the data stays on this device only.', language:'Language', g_rules:'Settings and rules', g_menu:'Menu', g_locs:'Locations', g_share:'Share access (code)', g_sync:'Sync now', g_setup:'Change name or access', g_demo_load:'Load sample (floor plan, menu, bookings)', g_demo_exit:'Leave the sample', g_demo_q:'This adds sample tables, a menu and bookings. Continue?', g_yes:'Yes, load',
   ru_biz:'Restaurant name', ru_big:'Large party from (guests)', ru_online:'Block online bookings', ru_onmax:'Max per online booking', ru_wmin:'Walk-ins: minimum', ru_wmax:'Walk-ins: maximum', ru_dur:'Expected time at table (min)', ru_durbig:'… for large parties (min)', ru_drink:'Drinks alert after (min, 0 = off)', ru_wait:'Long wait alert after (min)', ru_cur:'Currency', ru_soon:'Show table as reserved from (min before)', ru_online_note:'The online rules apply to the future booking page; here they warn when a booking exceeds them.',
-  m_hint:'Name and price. Drinks go to the bar, everything else to the kitchen.', m_add:'+ Add to {0}', m_name:'Name', m_price:'Price', cat_ent:'Starters', cat_pri:'Mains', cat_pos:'Desserts', cat_beb:'Drinks',
+  m_import:'Import menu', i_title:'Import menu', i_file:'Choose a file (Excel, CSV or text) or drop it here', i_or:'… or paste the menu (copied from a PDF, Word, a website or WhatsApp):', i_ph:'STARTERS\nSpring rolls (2) ........ $4.20\nSoup  7.80\n\nDRINKS\nWater 2.60', i_read:'Read', i_hint:'Each line with a price is a dish. Lines without a price (STARTERS, DRINKS, DESSERTS…) set the category. PDF: open it, select all, copy and paste here. Photos not yet.', i_found:'{0} dishes found. Check them before importing:', i_none:'No dishes with a price found. Try one line per dish with the price at the end.', i_dup:'The ones marked blue are already on the menu: their price is updated.', i_replace:'Replace the current menu (deletes dishes not in this list)', i_go:'Import {0} dishes', i_done:'{0} dishes imported.', i_back:'Back', i_err:'Couldn’t read that file. Save it as .xlsx or .csv, or copy and paste the content.', m_hint:'Name and price. Drinks go to the bar, everything else to the kitchen.', m_add:'+ Add to {0}', m_name:'Name', m_price:'Price', cat_ent:'Starters', cat_pri:'Mains', cat_pos:'Desserts', cat_beb:'Drinks',
   l_hint:'Each location has its own floor plan, bookings and stats. Rules and menu apply to all.', l_add:'+ New location', l_new:'Location {0}', l_copy:'Copy floor plan from…', l_copied:'Floor plan copied ({0} tables).', l_copy_busy:'First empty this location’s floor plan (edit mode).', l_main:'Main', fl_default:'Main room', fl_new:'Floor {0}', fl_add:'Add floor', fl_name:'Floor name', ph_fl:'Terrace, upstairs, patio…', fl_left:'← Move left', fl_right:'Move right →', fl_del:'Delete floor', fl_del_full:'First move this floor’s tables to another floor or delete them.', fl_deleted:'{0} deleted.', fl_empty:'This floor has no tables yet. Tap <b>Edit floor plan</b> to add them.', fl_hint:'Double-click a tab (or ✎ in edit mode) to rename it.', e_floor:'Floor', alg_other:'Other allergy…', alg_add:'Add', alg_hint:'Tap to mark. If it isn’t listed, type it below: it’s kept for next time.', al_gluten:'Gluten', al_dairy:'Dairy', al_egg:'Egg', al_peanut:'Peanuts', al_nuts:'Tree nuts', al_fish:'Fish', al_shell:'Shellfish', al_mollusc:'Molluscs', al_soy:'Soy', al_sesame:'Sesame', al_mustard:'Mustard', al_celery:'Celery', al_sulfite:'Sulphites', al_lupin:'Lupin', fl_free:'{0} free',
   s_saving:'Saving…', s_saved:'Saved {0}', s_expired:'Token expired: it must be renewed', s_later:'Offline – will save later', s_offline:'Offline', s_error:'Error {0} – tap to see', s_later_err:'Error {0} – not saved', s_demo:'Sample (this device only)', err_title:'Sync problem', err_retry:'Retry', err_write:'The token can read but not save: set “Contents” to “Read and write” for the data repository.', today:'today', tomorrow:'tomorrow', yesterday:'yesterday' },
 de: { locale:'de-DE', title:'Saal', setup_sub:'Gerät einrichten', tab_code:'Ich habe den Code', tab_token:'Erstes Mal (Token)',
@@ -397,7 +409,7 @@ de: { locale:'de-DE', title:'Saal', setup_sub:'Gerät einrichten', tab_code:'Ich
   csv:['Datum', 'Lokal', 'Tisch', 'Gäste', 'Von', 'Bis', 'Minuten', 'Summe', 'Geöffnet von', 'Reservierung'],
   g_dev:'Gerät von <b>{0}</b>', g_data:'Daten in {0}', g_demo:'Beispielmodus: die Daten bleiben nur auf diesem Gerät.', language:'Sprache', g_rules:'Einstellungen und Regeln', g_menu:'Karte', g_locs:'Lokale', g_share:'Zugang teilen (Code)', g_sync:'Jetzt synchronisieren', g_setup:'Name oder Zugang ändern', g_demo_load:'Beispiel laden (Plan, Karte, Reservierungen)', g_demo_exit:'Beispiel verlassen', g_demo_q:'Das fügt Beispieltische, eine Karte und Reservierungen hinzu. Weiter?', g_yes:'Ja, laden',
   ru_biz:'Name des Restaurants', ru_big:'Große Gruppe ab (Personen)', ru_online:'Online-Reservierungen sperren', ru_onmax:'Höchstens pro Online-Reservierung', ru_wmin:'Ohne Reservierung: mindestens', ru_wmax:'Ohne Reservierung: höchstens', ru_dur:'Geplante Zeit am Tisch (Min.)', ru_durbig:'… für große Gruppen (Min.)', ru_drink:'Getränke-Hinweis nach (Min., 0 = aus)', ru_wait:'Hinweis lange Wartezeit nach (Min.)', ru_cur:'Währung', ru_soon:'Tisch als reserviert zeigen ab (Min. vorher)', ru_online_note:'Die Online-Regeln gelten für die spätere Reservierungsseite; hier warnen sie, wenn eine Reservierung sie überschreitet.',
-  m_hint:'Name und Preis. Getränke gehen an die Bar, alles andere an die Küche.', m_add:'+ Zu {0} hinzufügen', m_name:'Name', m_price:'Preis', cat_ent:'Vorspeisen', cat_pri:'Hauptgerichte', cat_pos:'Desserts', cat_beb:'Getränke',
+  m_import:'Karte importieren', i_title:'Karte importieren', i_file:'Datei wählen (Excel, CSV oder Text) oder hierher ziehen', i_or:'… oder die Karte einfügen (kopiert aus PDF, Word, Website oder WhatsApp):', i_ph:'VORSPEISEN\nBruschetta (2) ........ 6,50 €\nSuppe  7,80\n\nGETRÄNKE\nWasser 2,60', i_read:'Einlesen', i_hint:'Jede Zeile mit Preis ist ein Gericht. Zeilen ohne Preis (VORSPEISEN, GETRÄNKE, DESSERTS…) legen die Kategorie fest. PDF: öffnen, alles markieren, kopieren und hier einfügen. Fotos noch nicht.', i_found:'{0} Gerichte gefunden. Vor dem Import prüfen:', i_none:'Keine Gerichte mit Preis gefunden. Eine Zeile pro Gericht mit dem Preis am Ende probieren.', i_dup:'Blau markierte stehen schon auf der Karte: der Preis wird aktualisiert.', i_replace:'Aktuelle Karte ersetzen (löscht Gerichte, die nicht in der Liste stehen)', i_go:'{0} Gerichte importieren', i_done:'{0} Gerichte importiert.', i_back:'Zurück', i_err:'Die Datei konnte nicht gelesen werden. Als .xlsx oder .csv speichern oder den Inhalt kopieren und einfügen.', m_hint:'Name und Preis. Getränke gehen an die Bar, alles andere an die Küche.', m_add:'+ Zu {0} hinzufügen', m_name:'Name', m_price:'Preis', cat_ent:'Vorspeisen', cat_pri:'Hauptgerichte', cat_pos:'Desserts', cat_beb:'Getränke',
   l_hint:'Jedes Lokal hat eigenen Plan, Reservierungen und Statistik. Regeln und Karte gelten für alle.', l_add:'+ Neues Lokal', l_new:'Lokal {0}', l_copy:'Plan kopieren von…', l_copied:'Plan kopiert ({0} Tische).', l_copy_busy:'Leere zuerst den Plan dieses Lokals (Bearbeiten).', l_main:'Hauptlokal', fl_default:'Hauptraum', fl_new:'Etage {0}', fl_add:'Etage hinzufügen', fl_name:'Name der Etage', ph_fl:'Terrasse, Obergeschoss, Innenhof…', fl_left:'← Nach links', fl_right:'Nach rechts →', fl_del:'Etage löschen', fl_del_full:'Verschiebe die Tische dieser Etage zuerst auf eine andere oder lösche sie.', fl_deleted:'{0} gelöscht.', fl_empty:'Diese Etage hat noch keine Tische. Tippe auf <b>Plan bearbeiten</b>, um welche anzulegen.', fl_hint:'Doppelklick auf einen Tab (oder ✎ im Bearbeiten-Modus) zum Umbenennen.', e_floor:'Etage', alg_other:'Andere Allergie…', alg_add:'Hinzufügen', alg_hint:'Antippen zum Markieren. Fehlt eine, unten eintragen: sie bleibt fürs nächste Mal gespeichert.', al_gluten:'Gluten', al_dairy:'Milch', al_egg:'Ei', al_peanut:'Erdnüsse', al_nuts:'Schalenfrüchte', al_fish:'Fisch', al_shell:'Krebstiere', al_mollusc:'Weichtiere', al_soy:'Soja', al_sesame:'Sesam', al_mustard:'Senf', al_celery:'Sellerie', al_sulfite:'Sulfite', al_lupin:'Lupinen', fl_free:'{0} frei',
   s_saving:'Speichert…', s_saved:'Gespeichert {0}', s_expired:'Token abgelaufen: muss erneuert werden', s_later:'Offline – wird später gespeichert', s_offline:'Offline', s_error:'Fehler {0} – antippen', s_later_err:'Fehler {0} – nicht gespeichert', s_demo:'Beispiel (nur dieses Gerät)', err_title:'Problem beim Synchronisieren', err_retry:'Nochmal', err_write:'Der Token kann lesen, aber nicht speichern: „Contents“ für das Daten-Repository auf „Read and write“ stellen.', today:'heute', tomorrow:'morgen', yesterday:'gestern' }
 };
@@ -1357,8 +1369,9 @@ function rules(){
   });
 }
 function menuEditor(){
-  var ov = modal('<h3>' + esc(t('g_menu')) + '</h3><p class="hint" style="margin-top:-6px">' + esc(t('m_hint')) + '</p><div id="mBody"></div><div class="row2" style="margin-top:12px"><button class="btn primary" data-close type="button">' + esc(t('done')) + '</button></div>');
+  var ov = modal('<h3>' + esc(t('g_menu')) + '</h3><p class="hint" style="margin-top:-6px">' + esc(t('m_hint')) + '</p><button class="btn wide" id="mImp" type="button">' + esc(t('m_import')) + '</button><div id="mBody"></div><div class="row2" style="margin-top:12px"><button class="btn primary" data-close type="button">' + esc(t('done')) + '</button></div>');
   ov.querySelector('.sheet').classList.add('wide');
+  $('#mImp', ov).onclick = function(){ close(ov); menuImport(); };
   var draw = function(){
     var mi = menuItems(true), b = $('#mBody', ov);
     b.innerHTML = CATS.map(function(c){
@@ -1372,6 +1385,173 @@ function menuEditor(){
     $$('[data-addm]', b).forEach(function(btn){ btn.onclick = function(){ var c = btn.dataset.addm; var x = { id: uid(), k: 'menu', cat: c, n: '', p: 0, o: Date.now() }; data[x.id] = x; draw(); var li = $('li[data-id="' + x.id + '"]', b); if(li) $('.n', li).focus(); }; });
   };
   draw();
+}
+/* ---------- menu import: Excel / CSV / pasted text → preview → Carta ---------- */
+var CAT_WORDS = {
+  beb: ['bebida', 'drink', 'getrank', 'vino', 'vinos', 'wine', 'wein', 'cerveza', 'beer', 'bier', 'trago', 'cocktail', 'coctel', 'cafe', 'cafeteria', 'coffee', 'kaffee', 'gaseosa', 'jugo', 'juice', 'saft', 'agua', 'water', 'wasser', 'licor', 'aperitivo', 'espumante', 'champagne', 'te', 'tea', 'tee', 'limonada', 'soda', 'refresco', 'bar', 'malbec', 'fernet', 'spritz', 'whisky', 'gin', 'vermut'],
+  pos: ['postre', 'dessert', 'nachspeise', 'nachtisch', 'dulce', 'helado', 'ice cream', 'eis', 'torta', 'cake', 'kuchen', 'flan', 'tiramisu', 'panqueque'],
+  ent: ['entrada', 'starter', 'vorspeise', 'appetizer', 'picada', 'para compartir', 'to share', 'tapa', 'ensalada', 'salad', 'salat', 'sopa', 'soup', 'suppe', 'empanada', 'provoleta', 'antipasto', 'snack', 'fiambre'],
+  pri: ['principal', 'main', 'hauptgericht', 'hauptspeise', 'plato', 'pasta', 'pizza', 'carne', 'parrilla', 'minuta', 'hamburguesa', 'burger', 'sandwich', 'risotto', 'milanesa', 'pescado', 'fish', 'pollo', 'menu del dia']
+};
+function catOf(txt, fallback){
+  var n = ' ' + norm(txt).replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ') + ' ';
+  for(var l in TX) for(var i = 0; i < CATS.length; i++){ var c = TX[l]['cat_' + CATS[i]]; if(c && n.trim() === norm(c)) return CATS[i]; }
+  var order = ['pos', 'beb', 'ent', 'pri'];
+  for(var k = 0; k < order.length; k++) if(CAT_WORDS[order[k]].some(function(w){ return n.indexOf(' ' + w) >= 0; })) return order[k];
+  return fallback || null;
+}
+/* "12.500" "12.500,50" "12,50" "1,250.00" "9500" → number */
+function parsePrice(raw){
+  var x = String(raw).replace(/[^\d.,]/g, ''); if(!x || !/\d/.test(x)) return NaN;
+  var d = x.lastIndexOf('.'), c = x.lastIndexOf(',');
+  if(d >= 0 && c >= 0){ var dec = d > c ? '.' : ','; x = x.split(dec === '.' ? ',' : '.').join(''); x = x.replace(dec, '.'); }
+  else if(d >= 0 || c >= 0){ var sep = d >= 0 ? '.' : ',', parts = x.split(sep); x = parts.length > 2 || parts[parts.length - 1].length === 3 ? parts.join('') : parts.join('.'); }
+  return parseFloat(x);
+}
+var PRICE_END = /^(.*?[^\d\s.,$€])[\s.\-–—:·…_|]*(?:\$|ARS|€|EUR|USD|U\$S)?\s*(\d[\d.,\s]*\d|\d)\s*(?:\$|ARS|€|EUR|-)?\s*$/i;
+function parseMenuText(txt){
+  var out = [], cat = null;
+  String(txt).replace(/\r/g, '').split('\n').forEach(function(line){
+    var l = line.replace(/\t+/g, '  ').replace(/[  ]+/g, ' ').trim();
+    if(!l) return;
+    var m = l.match(PRICE_END), price = m ? parsePrice(m[2].replace(/\s/g, '')) : NaN;
+    if(m && price > 0){
+      var name = m[1].replace(/[\s.\-–—:·…_|*•]+$/, '').replace(/^[\s\-–—*•·]+/, '').trim();
+      if(name.length >= 2) out.push({ n: name, p: price, cat: cat || catOf(name, 'pri') });
+      return;
+    }
+    if(l.length <= 40 && !/^[a-zà-ÿ]/.test(l) && !/[.!?]$/.test(l)) cat = catOf(l, cat || 'pri');   /* a heading; lower-case or long lines are descriptions */
+  });
+  return out;
+}
+function parseMenuRows(rows){   /* from Excel / CSV: a header row is optional */
+  rows = rows.map(function(r){ return r.map(function(c){ return String(c == null ? '' : c).trim(); }); }).filter(function(r){ return r.some(Boolean); });
+  if(!rows.length) return [];
+  var h = rows[0].map(norm), ci = { n: -1, p: -1, c: -1 };
+  h.forEach(function(x, i){
+    if(ci.n < 0 && /^(nombre|plato|producto|item|articulo|name|dish|gericht|bezeichnung|descripcion)/.test(x)) ci.n = i;
+    else if(ci.p < 0 && /^(precio|price|preis|importe|valor|pvp|\$)/.test(x)) ci.p = i;
+    else if(ci.c < 0 && /^(categoria|category|kategorie|rubro|seccion|tipo|section)/.test(x)) ci.c = i;
+  });
+  var headed = ci.n >= 0 || ci.p >= 0;
+  if(headed) rows = rows.slice(1);
+  var out = [], cat = null;
+  rows.forEach(function(r){
+    var pi = ci.p >= 0 ? ci.p : (function(){ for(var i = r.length - 1; i >= 0; i--) if(parsePrice(r[i]) > 0 && /^[\s$€]*[\d.,]+[\s$€]*$/.test(r[i])) return i; return -1; })();
+    var ni = ci.n >= 0 ? ci.n : r.findIndex(function(c, i){ return i !== pi && c && !/^[\s$€\d.,]+$/.test(c); });
+    var price = pi >= 0 ? parsePrice(r[pi]) : NaN, name = ni >= 0 ? r[ni] : '';
+    if(!(price > 0)){ if(name && r.filter(Boolean).length === 1) cat = catOf(name, cat || 'pri'); return; }   /* a row with only a heading */
+    if(!name) return;
+    var cc = ci.c >= 0 ? r[ci.c] : r.filter(function(c, i){ return i !== pi && i !== ni && c && !/^[\s$€\d.,]+$/.test(c); })[0];
+    out.push({ n: name, p: price, cat: (cc && catOf(cc, null)) || cat || catOf(name, 'pri') });
+  });
+  return out;
+}
+function parseCsv(txt){
+  var first = txt.split('\n')[0] || '', d = [';', '\t', ','].sort(function(a, b){ return first.split(b).length - first.split(a).length; })[0];
+  var rows = [], row = [], cell = '', q = false;
+  for(var i = 0; i < txt.length; i++){
+    var c = txt[i];
+    if(q){ if(c === '"'){ if(txt[i + 1] === '"'){ cell += '"'; i++; } else q = false; } else cell += c; }
+    else if(c === '"') q = true;
+    else if(c === d){ row.push(cell); cell = ''; }
+    else if(c === '\n'){ row.push(cell); rows.push(row); row = []; cell = ''; }
+    else if(c !== '\r') cell += c;
+  }
+  row.push(cell); rows.push(row); return rows;
+}
+/* .xlsx without libraries: unzip with the browser's DecompressionStream and read the first sheet */
+async function readXlsx(buf){
+  var b = new Uint8Array(buf), dv = new DataView(buf), files = {};
+  var e = b.length - 22; while(e > 0 && dv.getUint32(e, true) !== 0x06054b50) e--;
+  if(e <= 0) throw new Error('zip');
+  var n = dv.getUint16(e + 10, true), o = dv.getUint32(e + 16, true);
+  for(var i = 0; i < n; i++){
+    var method = dv.getUint16(o + 10, true), size = dv.getUint32(o + 20, true), nl = dv.getUint16(o + 28, true), xl = dv.getUint16(o + 30, true), cl = dv.getUint16(o + 32, true), off = dv.getUint32(o + 42, true);
+    files[new TextDecoder().decode(b.subarray(o + 46, o + 46 + nl))] = { method: method, size: size, off: off };
+    o += 46 + nl + xl + cl;
+  }
+  var get = async function(name){
+    var f = files[name]; if(!f) return null;
+    var start = f.off + 30 + dv.getUint16(f.off + 26, true) + dv.getUint16(f.off + 28, true), raw = b.subarray(start, start + f.size);
+    if(f.method === 0) return new TextDecoder().decode(raw);
+    var ds = new Blob([raw]).stream().pipeThrough(new DecompressionStream('deflate-raw'));
+    return await new Response(ds).text();
+  };
+  var xml = function(s){ return new DOMParser().parseFromString(s, 'application/xml'); };
+  var ss = [], sst = await get('xl/sharedStrings.xml');
+  if(sst) [].forEach.call(xml(sst).getElementsByTagName('si'), function(si){ ss.push([].map.call(si.getElementsByTagName('t'), function(x){ return x.textContent; }).join('')); });
+  var sheet = files['xl/worksheets/sheet1.xml'] ? 'xl/worksheets/sheet1.xml' : Object.keys(files).filter(function(k){ return /^xl\/worksheets\/[^/]+\.xml$/.test(k); }).sort()[0];
+  if(!sheet) throw new Error('sheet');
+  var rows = [];
+  [].forEach.call(xml(await get(sheet)).getElementsByTagName('row'), function(r){
+    var row = [];
+    [].forEach.call(r.getElementsByTagName('c'), function(c){
+      var ref = c.getAttribute('r') || '', col = 0, m = ref.match(/^[A-Z]+/);
+      if(m) for(var k = 0; k < m[0].length; k++) col = col * 26 + m[0].charCodeAt(k) - 64;
+      var tt = c.getAttribute('t'), v = c.getElementsByTagName('v')[0], val = '';
+      if(tt === 's' && v) val = ss[+v.textContent] || '';
+      else if(tt === 'inlineStr') val = [].map.call(c.getElementsByTagName('t'), function(x){ return x.textContent; }).join('');
+      else if(v) val = v.textContent;
+      row[(col || row.length + 1) - 1] = val;
+    });
+    rows.push(Array.from(row, function(x){ return x == null ? '' : x; }));
+  });
+  return rows;
+}
+function menuImport(){
+  var found = [];
+  var ov = modal('<h3>' + esc(t('i_title')) + '</h3><div class="imp" id="iBody"></div>');
+  ov.querySelector('.sheet').classList.add('wide');
+  var body = $('#iBody', ov), msg = function(s, c){ var m = $('#iMsg', ov); if(m) m.innerHTML = s ? '<div class="msg ' + (c || 'err') + '" style="margin:0 0 10px">' + esc(s) + '</div>' : ''; };
+  var start = function(text){
+    body.innerHTML = '<label class="drop" id="iDrop"><input type="file" id="iFile" accept=".xlsx,.csv,.tsv,.txt,text/csv,text/plain,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">' + esc(t('i_file')) + '</label>' +
+      '<p class="hint" style="margin:0 0 6px">' + esc(t('i_or')) + '</p><textarea id="iText" placeholder="' + esc(t('i_ph')) + '"></textarea><p class="hint">' + esc(t('i_hint')) + '</p><div id="iMsg"></div>' +
+      '<div class="row2" style="margin-top:12px"><button class="btn" data-discard type="button">' + esc(t('cancel')) + '</button><button class="btn primary" id="iRead" type="button">' + esc(t('i_read')) + '</button></div>';
+    if(text) $('#iText', body).value = text;
+    var file = async function(f){
+      if(!f) return;
+      try{
+        var name = f.name.toLowerCase(), list;
+        if(/\.xlsx$/.test(name)) list = parseMenuRows(await readXlsx(await f.arrayBuffer()));
+        else if(/\.(xls|pdf|docx?|jpe?g|png|heic)$/.test(name)) throw new Error('type');
+        else { var txt = await f.text(); list = /\.(csv|tsv)$/.test(name) || /[;\t]/.test(txt.split('\n')[0]) ? parseMenuRows(parseCsv(txt)) : parseMenuText(txt); if(!list.length) list = parseMenuText(txt); }
+        if(!list.length) return msg(t('i_none'));
+        found = list; review();
+      }catch(e){ msg(t('i_err')); }
+    };
+    $('#iFile', body).onchange = function(){ file(this.files[0]); };
+    var dz = $('#iDrop', body);
+    dz.addEventListener('dragover', function(e){ e.preventDefault(); dz.classList.add('over'); });
+    dz.addEventListener('dragleave', function(){ dz.classList.remove('over'); });
+    dz.addEventListener('drop', function(e){ e.preventDefault(); dz.classList.remove('over'); file(e.dataTransfer.files[0]); });
+    $('#iRead', body).onclick = function(){ var list = parseMenuText($('#iText', body).value); if(!list.length){ var rows = parseCsv($('#iText', body).value); if(rows.some(function(r){ return r.length > 1; })) list = parseMenuRows(rows); } if(!list.length) return msg(t('i_none')); found = list; review(); };
+  };
+  var review = function(){
+    var have = {}; menuItems().forEach(function(x){ have[norm(x.n)] = x; });
+    body.innerHTML = '<p style="margin-top:0">' + esc(t('i_found', found.length)) + '</p><ul class="prev" id="iList">' + found.map(function(x, i){
+      return '<li data-i="' + i + '" class="' + (have[norm(x.n)] ? 'dup' : '') + '"><input class="n" value="' + esc(x.n) + '" aria-label="' + esc(t('m_name')) + '"><input class="p" type="number" min="0" step="any" inputmode="decimal" value="' + (+x.p) + '" aria-label="' + esc(t('m_price')) + '"><select aria-label="' + esc(t('g_menu')) + '">' + CATS.map(function(c){ return '<option value="' + c + '"' + (c === x.cat ? ' selected' : '') + '>' + esc(t('cat_' + c)) + '</option>'; }).join('') + '</select><button type="button" data-x aria-label="' + esc(t('delete')) + '">×</button></li>';
+    }).join('') + '</ul>' + (found.some(function(x){ return have[norm(x.n)]; }) ? '<p class="hint">' + esc(t('i_dup')) + '</p>' : '') +
+      (menuItems().length ? '<label class="chk" style="margin-top:12px"><input type="checkbox" id="iRepl">' + esc(t('i_replace')) + '</label>' : '') +
+      '<div class="row2" style="margin-top:12px"><button class="btn" id="iBack" type="button">' + esc(t('i_back')) + '</button><button class="btn primary" id="iGo" type="button">' + esc(t('i_go', found.length)) + '</button></div>';
+    var sync = function(){ $$('#iList li', body).forEach(function(li){ var x = found[+li.dataset.i]; if(!x) return; x.n = $('.n', li).value.trim(); x.p = num($('.p', li).value, 0); x.cat = $('select', li).value; }); };
+    $$('#iList li', body).forEach(function(li){ $('[data-x]', li).onclick = function(){ sync(); found.splice(+li.dataset.i, 1); review(); }; });
+    $('#iBack', body).onclick = function(){ start(found.map(function(x){ return x.n + '  ' + x.p; }).join('\n')); };
+    $('#iGo', body).onclick = function(){
+      sync();
+      var list = [], keep = {}, o = Date.now(), nn = 0;
+      found.filter(function(x){ return x.n; }).forEach(function(x, i){
+        var old = have[norm(x.n)];
+        if(old){ old.p = x.p; old.cat = x.cat; old.n = x.n; keep[old.id] = 1; list.push(old); }
+        else { var m = { id: uid(), k: 'menu', n: x.n, p: x.p, cat: x.cat, o: o + i }; keep[m.id] = 1; list.push(m); have[norm(x.n)] = m; }
+        nn++;
+      });
+      var repl = $('#iRepl', body);
+      if(repl && repl.checked) menuItems(true).forEach(function(x){ if(!keep[x.id]){ x.del = true; list.push(x); } });
+      touch(list); close(ov); toast(t('i_done', nn)); menuEditor();
+    };
+  };
+  start('');
 }
 function locEditor(){
   var ov = modal('<h3>' + esc(t('g_locs')) + '</h3><p class="hint" style="margin-top:-6px">' + esc(t('l_hint')) + '</p><div id="lBody"></div><div class="row2" style="margin-top:12px"><button class="btn primary" data-close type="button">' + esc(t('done')) + '</button></div>');
