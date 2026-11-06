@@ -186,6 +186,15 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
 .ri .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
 .ri.done{opacity:.55}
 .tag{font-size:12px;font-weight:800;border-radius:6px;padding:1px 7px;background:var(--vio-soft);color:var(--vio)}
+.alg{display:flex;flex-wrap:wrap;gap:6px}
+.alg button{border:1.5px solid var(--line);border-radius:999px;background:var(--card);padding:6px 12px;font-size:14px;font-weight:700;cursor:pointer;color:var(--muted)}
+.alg button.on{border-color:var(--out);background:var(--out-soft);color:var(--out)}
+.alg button.on::before{content:'✓ '}
+.alg button.own{border-style:dashed}
+.algadd{display:flex;gap:6px;margin-top:8px}
+.algadd input{flex:1;min-width:0;padding:8px 12px;border:1.5px solid var(--line);border-radius:999px;background:var(--card);font-size:15px}
+.algadd input:focus{outline:none;border-color:var(--accent)}
+.algadd .btn{min-height:38px}
 .tag.big{background:var(--warn-soft);color:var(--warn)} .tag.alg{background:var(--out-soft);color:var(--out)} .tag.tt{background:var(--blue-soft);color:var(--blue)} .tag.ok{background:var(--in-soft);color:var(--in)}
 @media (max-width:620px){.ri{flex-wrap:wrap} .ri .acts{width:100%;justify-content:flex-start}}
 
@@ -322,7 +331,7 @@ es: { locale:'es-AR', title:'Salón', setup_sub:'Configuración del dispositivo'
   g_dev:'Dispositivo de <b>{0}</b>', g_data:'Datos en {0}', g_demo:'Modo ejemplo: los datos quedan solo en este dispositivo.', language:'Idioma', g_rules:'Ajustes y reglas', g_menu:'Carta', g_locs:'Locales', g_share:'Compartir acceso (código)', g_sync:'Sincronizar ahora', g_setup:'Cambiar nombre o acceso', g_demo_load:'Cargar ejemplo (plano, carta y reservas)', g_demo_exit:'Salir del ejemplo', g_demo_q:'Esto agrega mesas, una carta y reservas de ejemplo. ¿Seguir?', g_yes:'Sí, cargar',
   ru_biz:'Nombre del restaurante', ru_big:'Grupo grande desde (personas)', ru_online:'Bloquear reservas en línea', ru_onmax:'Máximo por reserva en línea', ru_wmin:'Sin reserva: mínimo', ru_wmax:'Sin reserva: máximo', ru_dur:'Tiempo previsto en mesa (min)', ru_durbig:'… para grupos grandes (min)', ru_drink:'Aviso de bebidas tras (min, 0 = no)', ru_wait:'Aviso de espera larga tras (min)', ru_cur:'Moneda', ru_soon:'Mostrar mesa como reservada desde (min antes)', ru_online_note:'Las reglas en línea valen para la futura página de reservas; acá avisan cuando una reserva las supera.',
   m_hint:'Nombre y precio. Las bebidas van a la barra, lo demás a la cocina.', m_add:'+ Agregar a {0}', m_name:'Nombre', m_price:'Precio', cat_ent:'Entradas', cat_pri:'Principales', cat_pos:'Postres', cat_beb:'Bebidas',
-  l_hint:'Cada local tiene su propio plano, reservas y estadísticas. Las reglas y la carta valen para todos.', l_add:'+ Nuevo local', l_new:'Local {0}', l_copy:'Copiar plano de…', l_copied:'Plano copiado ({0} mesas).', l_copy_busy:'Primero vaciá el plano de este local (modo edición).', l_main:'Principal', fl_default:'Salón', fl_new:'Piso {0}', fl_add:'Agregar piso', fl_name:'Nombre del piso', ph_fl:'Terraza, planta alta, patio…', fl_left:'← Mover a la izquierda', fl_right:'Mover a la derecha →', fl_del:'Eliminar piso', fl_del_full:'Primero mové las mesas de este piso a otro o eliminalas.', fl_deleted:'{0} eliminado.', fl_empty:'Este piso todavía no tiene mesas. Tocá <b>Editar plano</b> para agregarlas.', fl_hint:'Doble clic (o ✎ en modo edición) en una pestaña para renombrarla.', e_floor:'Piso', fl_free:'{0} libres',
+  l_hint:'Cada local tiene su propio plano, reservas y estadísticas. Las reglas y la carta valen para todos.', l_add:'+ Nuevo local', l_new:'Local {0}', l_copy:'Copiar plano de…', l_copied:'Plano copiado ({0} mesas).', l_copy_busy:'Primero vaciá el plano de este local (modo edición).', l_main:'Principal', fl_default:'Salón', fl_new:'Piso {0}', fl_add:'Agregar piso', fl_name:'Nombre del piso', ph_fl:'Terraza, planta alta, patio…', fl_left:'← Mover a la izquierda', fl_right:'Mover a la derecha →', fl_del:'Eliminar piso', fl_del_full:'Primero mové las mesas de este piso a otro o eliminalas.', fl_deleted:'{0} eliminado.', fl_empty:'Este piso todavía no tiene mesas. Tocá <b>Editar plano</b> para agregarlas.', fl_hint:'Doble clic (o ✎ en modo edición) en una pestaña para renombrarla.', e_floor:'Piso', alg_other:'Otra alergia…', alg_add:'Agregar', alg_hint:'Tocá para marcar. Si no está, escribila abajo: queda guardada para la próxima.', al_gluten:'Gluten (TACC)', al_dairy:'Lácteos', al_egg:'Huevo', al_peanut:'Maní', al_nuts:'Frutos secos', al_fish:'Pescado', al_shell:'Crustáceos', al_mollusc:'Moluscos', al_soy:'Soja', al_sesame:'Sésamo', al_mustard:'Mostaza', al_celery:'Apio', al_sulfite:'Sulfitos', al_lupin:'Altramuz', fl_free:'{0} libres',
   s_saving:'Guardando…', s_saved:'Guardado {0}', s_expired:'Token vencido: hay que renovarlo', s_later:'Sin conexión – se guarda después', s_offline:'Sin conexión', s_error:'Error {0} – tocá para ver', s_later_err:'Error {0} – no se guardó', s_demo:'Ejemplo (solo este dispositivo)', err_title:'Problema de sincronización', err_retry:'Reintentar', err_write:'El token puede leer pero no guardar: poné «Contents» en «Read and write» para el repositorio de datos.', today:'hoy', tomorrow:'mañana', yesterday:'ayer' },
 en: { locale:'en-US', title:'Floor', setup_sub:'Device setup', tab_code:'I have the code', tab_token:'First time (token)',
   name:'Your name', name_hint:'Saved with every table you open and every reservation.', code:'Access code', code_hint:'Whoever set up the app first has it (Settings → Share access).',
@@ -354,7 +363,7 @@ en: { locale:'en-US', title:'Floor', setup_sub:'Device setup', tab_code:'I have 
   g_dev:'Device of <b>{0}</b>', g_data:'Data in {0}', g_demo:'Sample mode: the data stays on this device only.', language:'Language', g_rules:'Settings and rules', g_menu:'Menu', g_locs:'Locations', g_share:'Share access (code)', g_sync:'Sync now', g_setup:'Change name or access', g_demo_load:'Load sample (floor plan, menu, bookings)', g_demo_exit:'Leave the sample', g_demo_q:'This adds sample tables, a menu and bookings. Continue?', g_yes:'Yes, load',
   ru_biz:'Restaurant name', ru_big:'Large party from (guests)', ru_online:'Block online bookings', ru_onmax:'Max per online booking', ru_wmin:'Walk-ins: minimum', ru_wmax:'Walk-ins: maximum', ru_dur:'Expected time at table (min)', ru_durbig:'… for large parties (min)', ru_drink:'Drinks alert after (min, 0 = off)', ru_wait:'Long wait alert after (min)', ru_cur:'Currency', ru_soon:'Show table as reserved from (min before)', ru_online_note:'The online rules apply to the future booking page; here they warn when a booking exceeds them.',
   m_hint:'Name and price. Drinks go to the bar, everything else to the kitchen.', m_add:'+ Add to {0}', m_name:'Name', m_price:'Price', cat_ent:'Starters', cat_pri:'Mains', cat_pos:'Desserts', cat_beb:'Drinks',
-  l_hint:'Each location has its own floor plan, bookings and stats. Rules and menu apply to all.', l_add:'+ New location', l_new:'Location {0}', l_copy:'Copy floor plan from…', l_copied:'Floor plan copied ({0} tables).', l_copy_busy:'First empty this location’s floor plan (edit mode).', l_main:'Main', fl_default:'Main room', fl_new:'Floor {0}', fl_add:'Add floor', fl_name:'Floor name', ph_fl:'Terrace, upstairs, patio…', fl_left:'← Move left', fl_right:'Move right →', fl_del:'Delete floor', fl_del_full:'First move this floor’s tables to another floor or delete them.', fl_deleted:'{0} deleted.', fl_empty:'This floor has no tables yet. Tap <b>Edit floor plan</b> to add them.', fl_hint:'Double-click a tab (or ✎ in edit mode) to rename it.', e_floor:'Floor', fl_free:'{0} free',
+  l_hint:'Each location has its own floor plan, bookings and stats. Rules and menu apply to all.', l_add:'+ New location', l_new:'Location {0}', l_copy:'Copy floor plan from…', l_copied:'Floor plan copied ({0} tables).', l_copy_busy:'First empty this location’s floor plan (edit mode).', l_main:'Main', fl_default:'Main room', fl_new:'Floor {0}', fl_add:'Add floor', fl_name:'Floor name', ph_fl:'Terrace, upstairs, patio…', fl_left:'← Move left', fl_right:'Move right →', fl_del:'Delete floor', fl_del_full:'First move this floor’s tables to another floor or delete them.', fl_deleted:'{0} deleted.', fl_empty:'This floor has no tables yet. Tap <b>Edit floor plan</b> to add them.', fl_hint:'Double-click a tab (or ✎ in edit mode) to rename it.', e_floor:'Floor', alg_other:'Other allergy…', alg_add:'Add', alg_hint:'Tap to mark. If it isn’t listed, type it below: it’s kept for next time.', al_gluten:'Gluten', al_dairy:'Dairy', al_egg:'Egg', al_peanut:'Peanuts', al_nuts:'Tree nuts', al_fish:'Fish', al_shell:'Shellfish', al_mollusc:'Molluscs', al_soy:'Soy', al_sesame:'Sesame', al_mustard:'Mustard', al_celery:'Celery', al_sulfite:'Sulphites', al_lupin:'Lupin', fl_free:'{0} free',
   s_saving:'Saving…', s_saved:'Saved {0}', s_expired:'Token expired: it must be renewed', s_later:'Offline – will save later', s_offline:'Offline', s_error:'Error {0} – tap to see', s_later_err:'Error {0} – not saved', s_demo:'Sample (this device only)', err_title:'Sync problem', err_retry:'Retry', err_write:'The token can read but not save: set “Contents” to “Read and write” for the data repository.', today:'today', tomorrow:'tomorrow', yesterday:'yesterday' },
 de: { locale:'de-DE', title:'Saal', setup_sub:'Gerät einrichten', tab_code:'Ich habe den Code', tab_token:'Erstes Mal (Token)',
   name:'Dein Name', name_hint:'Wird bei jedem geöffneten Tisch und jeder Reservierung gespeichert.', code:'Zugangscode', code_hint:'Hat, wer die App zuerst eingerichtet hat (Einstellungen → Zugang teilen).',
@@ -386,7 +395,7 @@ de: { locale:'de-DE', title:'Saal', setup_sub:'Gerät einrichten', tab_code:'Ich
   g_dev:'Gerät von <b>{0}</b>', g_data:'Daten in {0}', g_demo:'Beispielmodus: die Daten bleiben nur auf diesem Gerät.', language:'Sprache', g_rules:'Einstellungen und Regeln', g_menu:'Karte', g_locs:'Lokale', g_share:'Zugang teilen (Code)', g_sync:'Jetzt synchronisieren', g_setup:'Name oder Zugang ändern', g_demo_load:'Beispiel laden (Plan, Karte, Reservierungen)', g_demo_exit:'Beispiel verlassen', g_demo_q:'Das fügt Beispieltische, eine Karte und Reservierungen hinzu. Weiter?', g_yes:'Ja, laden',
   ru_biz:'Name des Restaurants', ru_big:'Große Gruppe ab (Personen)', ru_online:'Online-Reservierungen sperren', ru_onmax:'Höchstens pro Online-Reservierung', ru_wmin:'Ohne Reservierung: mindestens', ru_wmax:'Ohne Reservierung: höchstens', ru_dur:'Geplante Zeit am Tisch (Min.)', ru_durbig:'… für große Gruppen (Min.)', ru_drink:'Getränke-Hinweis nach (Min., 0 = aus)', ru_wait:'Hinweis lange Wartezeit nach (Min.)', ru_cur:'Währung', ru_soon:'Tisch als reserviert zeigen ab (Min. vorher)', ru_online_note:'Die Online-Regeln gelten für die spätere Reservierungsseite; hier warnen sie, wenn eine Reservierung sie überschreitet.',
   m_hint:'Name und Preis. Getränke gehen an die Bar, alles andere an die Küche.', m_add:'+ Zu {0} hinzufügen', m_name:'Name', m_price:'Preis', cat_ent:'Vorspeisen', cat_pri:'Hauptgerichte', cat_pos:'Desserts', cat_beb:'Getränke',
-  l_hint:'Jedes Lokal hat eigenen Plan, Reservierungen und Statistik. Regeln und Karte gelten für alle.', l_add:'+ Neues Lokal', l_new:'Lokal {0}', l_copy:'Plan kopieren von…', l_copied:'Plan kopiert ({0} Tische).', l_copy_busy:'Leere zuerst den Plan dieses Lokals (Bearbeiten).', l_main:'Hauptlokal', fl_default:'Hauptraum', fl_new:'Etage {0}', fl_add:'Etage hinzufügen', fl_name:'Name der Etage', ph_fl:'Terrasse, Obergeschoss, Innenhof…', fl_left:'← Nach links', fl_right:'Nach rechts →', fl_del:'Etage löschen', fl_del_full:'Verschiebe die Tische dieser Etage zuerst auf eine andere oder lösche sie.', fl_deleted:'{0} gelöscht.', fl_empty:'Diese Etage hat noch keine Tische. Tippe auf <b>Plan bearbeiten</b>, um welche anzulegen.', fl_hint:'Doppelklick auf einen Tab (oder ✎ im Bearbeiten-Modus) zum Umbenennen.', e_floor:'Etage', fl_free:'{0} frei',
+  l_hint:'Jedes Lokal hat eigenen Plan, Reservierungen und Statistik. Regeln und Karte gelten für alle.', l_add:'+ Neues Lokal', l_new:'Lokal {0}', l_copy:'Plan kopieren von…', l_copied:'Plan kopiert ({0} Tische).', l_copy_busy:'Leere zuerst den Plan dieses Lokals (Bearbeiten).', l_main:'Hauptlokal', fl_default:'Hauptraum', fl_new:'Etage {0}', fl_add:'Etage hinzufügen', fl_name:'Name der Etage', ph_fl:'Terrasse, Obergeschoss, Innenhof…', fl_left:'← Nach links', fl_right:'Nach rechts →', fl_del:'Etage löschen', fl_del_full:'Verschiebe die Tische dieser Etage zuerst auf eine andere oder lösche sie.', fl_deleted:'{0} gelöscht.', fl_empty:'Diese Etage hat noch keine Tische. Tippe auf <b>Plan bearbeiten</b>, um welche anzulegen.', fl_hint:'Doppelklick auf einen Tab (oder ✎ im Bearbeiten-Modus) zum Umbenennen.', e_floor:'Etage', alg_other:'Andere Allergie…', alg_add:'Hinzufügen', alg_hint:'Antippen zum Markieren. Fehlt eine, unten eintragen: sie bleibt fürs nächste Mal gespeichert.', al_gluten:'Gluten', al_dairy:'Milch', al_egg:'Ei', al_peanut:'Erdnüsse', al_nuts:'Schalenfrüchte', al_fish:'Fisch', al_shell:'Krebstiere', al_mollusc:'Weichtiere', al_soy:'Soja', al_sesame:'Sesam', al_mustard:'Senf', al_celery:'Sellerie', al_sulfite:'Sulfite', al_lupin:'Lupinen', fl_free:'{0} frei',
   s_saving:'Speichert…', s_saved:'Gespeichert {0}', s_expired:'Token abgelaufen: muss erneuert werden', s_later:'Offline – wird später gespeichert', s_offline:'Offline', s_error:'Fehler {0} – antippen', s_later_err:'Fehler {0} – nicht gespeichert', s_demo:'Beispiel (nur dieses Gerät)', err_title:'Problem beim Synchronisieren', err_retry:'Nochmal', err_write:'Der Token kann lesen, aber nicht speichern: „Contents“ für das Daten-Repository auf „Read and write“ stellen.', today:'heute', tomorrow:'morgen', yesterday:'gestern' }
 };
 var lang = store.get(KEY.lang, null);
@@ -428,6 +437,16 @@ var norm = function(s){ return String(s || '').toLowerCase().normalize('NFD').re
 var natural = function(a, b){ return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: 'base' }); };
 var copy = function(x){ return JSON.parse(JSON.stringify(x)); };
 var num = function(v, d){ var n = parseFloat(String(v).replace(',', '.')); return isFinite(n) ? n : d; };
+/* allergies: the 14 main allergens as tags ('a:key'), plus whatever else someone typed (free text, kept as a tag for next time) */
+var ALG = ['gluten', 'dairy', 'egg', 'peanut', 'nuts', 'fish', 'shell', 'mollusc', 'soy', 'sesame', 'mustard', 'celery', 'sulfite', 'lupin'];
+function algList(r){ var a = r && r.alg; if(!a) return []; if(Array.isArray(a)) return a.filter(Boolean); return String(a).split(/[,;]/).map(function(x){ return x.trim(); }).filter(Boolean); }
+var algName = function(x){ return /^a:/.test(x) ? t('al_' + x.slice(2)) : x; };
+var algText = function(r){ return algList(r).map(algName).join(', '); };
+function algToken(txt){   /* "frutos secos" → 'a:nuts' if it's one of the common ones in any language */
+  var n = norm(txt).trim(); if(!n) return '';
+  for(var i = 0; i < ALG.length; i++) for(var l in TX){ var s = TX[l]['al_' + ALG[i]]; if(s && (norm(s) === n || norm(s).replace(/\s*\(.*\)/, '') === n)) return 'a:' + ALG[i]; }
+  return txt.trim().replace(/\s+/g, ' ').replace(/^./, function(c){ return c.toUpperCase(); });
+}
 var money = function(n){ return (S().cur || '$') + ' ' + Math.round(n || 0).toLocaleString(t('locale')); };
 
 /* ---------- state ----------
@@ -436,7 +455,7 @@ var money = function(n){ return (S().cur || '$') + ' ' + Math.round(n || 0).toLo
    tbl  table: loc, n, sh (round/sq/rect), x, y, w, h (floor = 1000 × 640), min, max, j (join id; same j = joined)
    flr  floor of a location (tab above the plan): loc, n, o; a table's fl says which floor it is on (none = the first)
    menu dish: n, p (price), cat (ent/pri/pos/beb), o
-   res  booking or waitlist: loc, d, a (HH:MM), n, p, tel, src (tel/walk/web), tb (table id), dep, alg, note, tags[], st ('' / seated / noshow / cancel / wait), at (waitlist since), nt (notified), v (visit)
+   res  booking or waitlist: loc, d, a (HH:MM), n, p, tel, src (tel/walk/web), tb (table id), dep, alg [allergies: 'a:gluten'… for the common ones, free text for others], note, tags[], st ('' / seated / noshow / cancel / wait), at (waitlist since), nt (notified), v (visit)
    visit a seated table: loc, tb [table ids], p, n, res, a (seated ms), end, cl (cleaned ms), bill (ms), dk (drinks checked ms), note, by, it {id → {id, m, n, p, q, seat, cat, s (0 new · 1 sent · 2 served), t, by, del}}
    Every record has t (last change; newer wins) and del: true when deleted. */
 var cfg = store.get(KEY.cfg, null);              /* {repo, token, code, name} or {demo: true, name} */
@@ -928,7 +947,7 @@ function openUnit(key){
       h += '<div class="tinfo"><div>' + esc(t('t_people')) + '<b><span class="step"><button type="button" data-pp="-1">−</button><b>' + (+v.p) + '</b><button type="button" data-pp="1">+</button></span></b></div>' +
         '<div class="' + (over > 0 ? 'late' : '') + '">' + esc(t('t_time')) + '<b>' + dur(m) + '</b>' + (over > 0 ? esc(t('t_over', dur(over))) : esc(t('t_exp')) + ' ' + dur(exp)) + '</div>' +
         '<div>' + esc(t('t_free_at')) + '<b>' + hm(Math.max(now, v.a + exp * MIN)) + '</b>' + esc(t('t_seated')) + ' ' + hm(v.a) + '</div></div>';
-      var notes = [r && r.n ? r.n : v.n, r && r.alg ? '⚠ ' + r.alg : '', r && (r.tags || []).length ? r.tags.map(function(x){ return t('tag_' + x); }).join(', ') : '', r && r.note, v.note].filter(Boolean);
+      var notes = [r && r.n ? r.n : v.n, r && algList(r).length ? '⚠ ' + algText(r) : '', r && (r.tags || []).length ? r.tags.map(function(x){ return t('tag_' + x); }).join(', ') : '', r && r.note, v.note].filter(Boolean);
       if(notes.length) h += '<div class="note">' + esc(notes.join(' · ')) + '</div>';
       var its = items(v), unsent = its.filter(function(i){ return !i.s; }).length, seats = {};
       h += '<h4>' + esc(t('t_order')) + '</h4>';
@@ -1053,7 +1072,7 @@ function resItem(r){
   var u = r.tb && tableById(r.tb) ? unitOf(r.tb) : null, s = S(), past = r.st && r.st !== 'wait';
   var tags = '';
   if(+r.p >= s.big) tags += '<span class="tag big">' + esc(t('r_big')) + '</span>';
-  if(r.alg) tags += '<span class="tag alg">⚠ ' + esc(r.alg) + '</span>';
+  algList(r).forEach(function(x){ tags += '<span class="tag alg">⚠ ' + esc(algName(x)) + '</span>'; });
   (r.tags || []).forEach(function(x){ tags += '<span class="tag">' + esc(t('tag_' + x)) + '</span>'; });
   if(+r.dep) tags += '<span class="tag ok">' + esc(t('r_dep_s', money(r.dep))) + '</span>';
   var meta = [esc(t('src_' + (r.src || 'tel')))];
@@ -1109,7 +1128,8 @@ function waitSheet(r){
 }
 /* booking window: saves when closed (Done, tap next to it, Escape); Discard closes without saving */
 function editRes(orig, preset){
-  var r = orig ? copy(orig) : Object.assign({ id: uid(), k: 'res', loc: curLoc, d: todayIso(), a: '', n: '', p: 2, tel: '', src: 'tel', tb: '', dep: 0, alg: '', note: '', tags: [], st: '' }, preset || {});
+  var r = orig ? copy(orig) : Object.assign({ id: uid(), k: 'res', loc: curLoc, d: todayIso(), a: '', n: '', p: 2, tel: '', src: 'tel', tb: '', dep: 0, alg: [], note: '', tags: [], st: '' }, preset || {});
+  r.alg = algList(r);
   var isWait = r.st === 'wait', warned = false;
   if(isWait && !r.at) r.at = Date.now();
   if(!orig && !isWait && !r.a){ var nx = new Date(Date.now() + 60 * MIN); r.a = pad(nx.getHours()) + ':' + (nx.getMinutes() < 30 ? '30' : '00'); if(nx.getMinutes() >= 30) r.a = pad((nx.getHours() + 1) % 24) + ':00'; }
@@ -1120,7 +1140,8 @@ function editRes(orig, preset){
     '<div class="grid2 wrap"><div class="field"><label for="rT">' + esc(t('r_tel')) + '</label><input id="rT" type="tel" value="' + esc(r.tel) + '" autocomplete="off"></div>' +
     (isWait ? '' : '<div class="field"><label for="rTb">' + esc(t('r_table')) + '</label><select id="rTb"></select></div>') + '</div>' +
     (isWait ? '' : '<div class="field"><span class="lbl">' + esc(t('r_src')) + '</span><div class="seg" id="rSrc">' + ['tel', 'walk', 'web'].map(function(s){ return '<button type="button" data-src="' + s + '"' + (r.src === s ? ' class="on"' : '') + '>' + esc(t('src_' + s)) + '</button>'; }).join('') + '</div></div>') +
-    '<div class="grid2 wrap"><div class="field"><label for="rAlg">' + esc(t('r_alg')) + '</label><input id="rAlg" value="' + esc(r.alg) + '" placeholder="' + esc(t('ph_alg')) + '"></div>' + (isWait ? '' : '<div class="field"><label for="rDep">' + esc(t('r_dep')) + '</label><input id="rDep" type="number" min="0" inputmode="decimal" value="' + (+r.dep || '') + '"></div>') + '</div>' +
+    '<div class="field"><span class="lbl">' + esc(t('r_alg')) + '</span><div class="alg" id="rAlg"></div><div class="algadd"><input id="rAlgNew" placeholder="' + esc(t('alg_other')) + '" autocomplete="off" enterkeyhint="done"><button class="btn sm" id="rAlgAdd" type="button">' + esc(t('alg_add')) + '</button></div><p class="hint">' + esc(t('alg_hint')) + '</p></div>' +
+    (isWait ? '' : '<div class="grid2 wrap"><div class="field"><label for="rDep">' + esc(t('r_dep')) + '</label><input id="rDep" type="number" min="0" inputmode="decimal" value="' + (+r.dep || '') + '"></div></div>') +
     '<div class="field"><span class="lbl">' + esc(t('r_tags')) + '</span><div class="seg" id="rTags">' + ['vip', 'bday'].map(function(x){ return '<button type="button" data-tag="' + x + '"' + ((r.tags || []).indexOf(x) >= 0 ? ' class="on"' : '') + '>' + esc(t('tag_' + x)) + '</button>'; }).join('') + '</div></div>' +
     '<div class="field"><label for="rNote">' + esc(t('r_notes')) + '</label><textarea id="rNote" placeholder="' + esc(t('ph_rnotes')) + '">' + esc(r.note) + '</textarea></div>' +
     (orig && !isWait ? '<div class="field"><span class="lbl">' + esc(t('r_state')) + '</span><div class="seg" id="rSt">' + ['', 'seated', 'noshow', 'cancel'].map(function(s){ return '<button type="button" data-st="' + s + '"' + ((r.st || '') === s ? ' class="on"' : '') + '>' + esc(t('rs_' + s)) + '</button>'; }).join('') + '</div></div>' : '') +
@@ -1137,6 +1158,21 @@ function editRes(orig, preset){
     };
     if(orig && r.tb) r.tbSet = true;
     fillTables();
+    /* allergy tags: the common ones, then the own ones used before in any booking, then this booking's */
+    var own = function(){ var seen = {}, out = []; live('res').concat([r]).forEach(function(x){ algList(x).forEach(function(a){ if(!/^a:/.test(a) && !seen[norm(a)]){ seen[norm(a)] = 1; out.push(a); } }); }); return out.sort(natural); };
+    var drawAlg = function(){
+      var on = {}; r.alg.forEach(function(a){ on[a] = 1; });
+      $('#rAlg', el).innerHTML = ALG.map(function(k){ return 'a:' + k; }).concat(own()).map(function(a){ return '<button type="button" data-alg="' + esc(a) + '" class="' + (on[a] ? 'on' : '') + (/^a:/.test(a) ? '' : ' own') + '" aria-pressed="' + !!on[a] + '">' + esc(algName(a)) + '</button>'; }).join('');
+    };
+    var addAlg = function(){
+      var inp = $('#rAlgNew', el), tok = algToken(inp.value);
+      if(tok && !r.alg.some(function(a){ return norm(a) === norm(tok); })) r.alg.push(tok);
+      inp.value = ''; drawAlg();
+    };
+    drawAlg();
+    $('#rAlg', el).addEventListener('click', function(e){ var b = e.target.closest('[data-alg]'); if(!b) return; var a = b.dataset.alg, i = r.alg.indexOf(a); if(i >= 0) r.alg.splice(i, 1); else r.alg.push(a); drawAlg(); });
+    $('#rAlgAdd', el).onclick = addAlg;
+    $('#rAlgNew', el).addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); addAlg(); } });
     $$('[data-d]', el).forEach(function(b){ b.onclick = function(){ r.p = Math.max(1, (+r.p || 1) + +b.dataset.d); $('#rP', el).textContent = r.p; warned = false; fillTables(); }; });
     ['#rD', '#rA'].forEach(function(s){ var x = $(s, el); if(x) x.addEventListener('change', function(){ warned = false; fillTables(); }); });
     var tb = $('#rTb', el); if(tb) tb.onchange = function(){ r.tbSet = !!tb.value; r.tb = tb.value; warned = false; };
@@ -1146,8 +1182,9 @@ function editRes(orig, preset){
     var rd = $('#rDel', el); if(rd) rd.onclick = function(){ close(el); var o = data[r.id]; o.del = true; touch(o); toast(t('r_deleted'), t('undo'), function(){ o.del = false; touch(o); }); };
     if(!orig) setTimeout(function(){ $('#rN', el).focus(); }, 50);
     el._save = function(){
-      r.n = $('#rN', el).value.trim(); r.tel = $('#rT', el).value.trim(); r.alg = $('#rAlg', el).value.trim(); r.note = $('#rNote', el).value.trim();
-      var blank = !orig && !r.n && !r.tel && !r.note && !r.alg;
+      r.n = $('#rN', el).value.trim(); r.tel = $('#rT', el).value.trim(); r.note = $('#rNote', el).value.trim();
+      if($('#rAlgNew', el).value.trim()) addAlg();   /* typed but not added yet: keep it */
+      var blank = !orig && !r.n && !r.tel && !r.note && !r.alg.length;
       if(blank) return true;
       if(!isWait){ r.d = $('#rD', el).value; r.a = $('#rA', el).value; r.dep = num($('#rDep', el).value, 0); }
       if(!r.n){ msg(t('err_rname')); return false; }
@@ -1158,7 +1195,7 @@ function editRes(orig, preset){
         var s = S(); if(r.src === 'web' && r.p > s.onMax && !warned && !(orig && orig.p === r.p)){ warned = true; msg(t('r_over_online', s.onMax), 'warn'); return false; }
       }
       delete r.tbSet;
-      if(orig && JSON.stringify(Object.assign({}, orig, { t: 0 })) === JSON.stringify(Object.assign({}, r, { t: 0 }))) return true;
+      if(orig && JSON.stringify(Object.assign({}, orig, { t: 0, alg: algList(orig) })) === JSON.stringify(Object.assign({}, r, { t: 0 }))) return true;
       if(!orig) r.by = cfg.name;
       touch(r); toast(t('r_saved'));
       return true;
@@ -1378,7 +1415,7 @@ function loadSample(){
   openV([T.T21.id], 3, ago(22), 'Sam'); openV([T.T24.id], 6, ago(95), 'Ana', { bill: ago(2) });
   var v6 = add({ id: uid(), k: 'visit', loc: L, tb: [T.T6.id], p: 2, a: ago(80), end: ago(6), by: 'Ana', it: order(2, ago(80), 'Ana', true) }); v6.tot = visitTotal(v6);
   add({ id: uid(), k: 'res', loc: L, d: slot(20).d, a: slot(20).a, n: 'Alvarez', p: 2, tel: '+54 9 11 5555-0101', src: 'tel', tb: T.T2.id, st: '', tags: [] });
-  add({ id: uid(), k: 'res', loc: L, d: slot(35).d, a: slot(35).a, n: 'Chen', p: 8, tel: '+54 9 11 5555-0102', src: 'web', tb: T.T8.id, dep: 20000, alg: 'Frutos secos', st: '', tags: ['bday'] });
+  add({ id: uid(), k: 'res', loc: L, d: slot(35).d, a: slot(35).a, n: 'Chen', p: 8, tel: '+54 9 11 5555-0102', src: 'web', tb: T.T8.id, dep: 20000, alg: ['a:nuts', 'Kiwi'], st: '', tags: ['bday'] });
   add({ id: uid(), k: 'res', loc: L, d: slot(50).d, a: slot(50).a, n: 'Okafor', p: 4, tel: '', src: 'tel', tb: T.T3.id, st: '', tags: ['vip'] });
   add({ id: uid(), k: 'res', loc: L, d: slot(95).d, a: slot(95).a, n: 'Ruiz', p: 2, src: 'walk', tb: T.B1.id, st: '', tags: [] });
   add({ id: uid(), k: 'res', loc: L, d: addDays(td, 1), a: '21:00', n: 'Martínez', p: 6, tel: '+54 9 11 5555-0103', src: 'tel', tb: T.T4.id, dep: 15000, st: '', tags: [] });
