@@ -463,9 +463,10 @@ function algToken(txt){   /* "frutos secos" → 'a:nuts' if it's one of the comm
   return txt.trim().replace(/\s+/g, ' ').replace(/^./, function(c){ return c.toUpperCase(); });
 }
 /* occasions and guest tags (r.tags): known keys with an icon, or free text someone typed (kept as a tag for next time) */
-var OCC = ['bday', 'anniv', 'date', 'proposal', 'celebr', 'grad', 'farewell', 'business', 'first', 'regular', 'vip'];
+var OCC = ['bday', 'anniv', 'date', 'proposal', 'regular', 'vip'];
+var OCC_OLD = ['celebr', 'grad', 'farewell', 'business', 'first'];   /* no longer offered; bookings that already have them still show them */
 var OCC_ICON = { bday: '🎂', anniv: '💍', date: '❤️', proposal: '💐', celebr: '🎉', grad: '🎓', farewell: '👋', business: '💼', first: '✨', regular: '🏠', vip: '⭐' };
-var occName = function(x){ return OCC.indexOf(x) >= 0 ? t('tag_' + x) : x; };
+var occName = function(x){ return OCC.indexOf(x) >= 0 || OCC_OLD.indexOf(x) >= 0 ? t('tag_' + x) : x; };
 var occLabel = function(x){ return (OCC_ICON[x] || '🎉') + ' ' + occName(x); };
 function occToken(txt){
   var n = norm(txt).trim(); if(!n) return '';
@@ -1206,7 +1207,7 @@ function editRes(orig, preset){
     $$('[data-st]', el).forEach(function(b){ b.onclick = function(){ r.st = b.dataset.st; $$('[data-st]', el).forEach(function(o){ o.classList.toggle('on', o === b); }); }; });
     /* occasion tags: the known ones, then own ones used before in any booking */
     r.tags = (r.tags || []).slice();
-    var ownOcc = function(){ var seen = {}, out = []; live('res').concat([r]).forEach(function(x){ (x.tags || []).forEach(function(a){ if(OCC.indexOf(a) < 0 && !seen[norm(a)]){ seen[norm(a)] = 1; out.push(a); } }); }); return out.sort(natural); };
+    var ownOcc = function(){ var seen = {}, out = []; live('res').concat([r]).forEach(function(x){ (x.tags || []).forEach(function(a){ if(OCC.indexOf(a) < 0 && (OCC_OLD.indexOf(a) < 0 || x === r) && !seen[norm(a)]){ seen[norm(a)] = 1; out.push(a); } }); }); return out.sort(natural); };
     var drawOcc = function(){
       $('#rTags', el).innerHTML = OCC.concat(ownOcc()).map(function(a){ var on = r.tags.indexOf(a) >= 0; return '<button type="button" data-occ="' + esc(a) + '" class="' + (on ? 'on' : '') + (OCC.indexOf(a) < 0 ? ' own' : '') + '" aria-pressed="' + on + '">' + esc(occLabel(a)) + '</button>'; }).join('');
     };

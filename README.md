@@ -20,7 +20,7 @@ Ein Bildschirm für Tische, Reservierungen, Zeit am Tisch und Bestellungen. Aufg
 - **Reservas:**
   - Tagesliste mit Vor/Zurück. Pro Reservierung: Uhrzeit, Name, Personen, Tisch, Herkunft (Telefon, persönlich, online), Telefon, Etiketten „Große Gruppe“, Allergien, Anlässe, Anzahlung.
   - **Allergien als Tags:** die 14 Hauptallergene (Gluten/TACC, Milch, Ei, Erdnüsse, Schalenfrüchte, Fisch, Krebstiere, Weichtiere, Soja, Sesam, Senf, Sellerie, Sulfite, Lupinen) zum Antippen. Fehlt eine, unten unter „Otra alergia…“ eintragen; sie erscheint danach bei allen Reservierungen als eigener (gestrichelter) Tag. Wird z. B. „frutos secos“ eingetippt, erkennt die App den vorhandenen Tag. Die Allergien stehen rot in der Liste und im Tischfenster.
-  - **Besondere Anlässe als Tags:** 🎂 Cumpleaños, 💍 Aniversario, ❤️ Cita romántica, 💐 Pedida de mano, 🎉 Celebración, 🎓 Graduación, 👋 Despedida, 💼 Negocios, ✨ Primera visita, 🏠 Cliente habitual, ⭐ VIP. Eigene Anlässe unter „Otra ocasión…“ eintragen; sie werden gemerkt und danach überall angeboten. Das Symbol erscheint auch auf dem Tisch im Saalplan (reserviert und während die Gäste sitzen) und im Tischfenster.
+  - **Besondere Anlässe als Tags:** 🎂 Cumpleaños, 💍 Aniversario, ❤️ Cita romántica, 💐 Pedida de mano, 🏠 Cliente habitual, ⭐ VIP. Eigene Anlässe unter „Otra ocasión…“ eintragen; sie werden gemerkt und danach überall angeboten. Das Symbol erscheint auch auf dem Tisch im Saalplan (reserviert und während die Gäste sitzen) und im Tischfenster.
   - **Tisch wird automatisch vorgeschlagen:** der kleinste passende Tisch (oder zusammengestellte Tische), der zu der Zeit nicht reserviert oder besetzt ist. Man kann einen anderen wählen; bei Überschneidung warnt die App.
   - Schnellknöpfe „Sentar“ und „No vino“ (zählt in der Statistik als nicht erschienen).
   - **Warteliste:** Name, Personen, Telefon, Wartezeit. „Avisar“ öffnet eine fertige SMS oder WhatsApp („tu mesa está lista“). „Sentar“ schlägt einen freien Tisch vor.
@@ -54,7 +54,7 @@ Ein Bildschirm für Tische, Reservierungen, Zeit am Tisch und Bestellungen. Aufg
 | `flr` | Etage (Tab über dem Plan): `loc`, `n`, `o`. Ohne Einträge hat das Lokal eine Etage |
 | `tbl` | Tisch: `loc`, `fl` (Etage; leer oder unbekannt = erste Etage), `n`, `sh` (`round`/`sq`/`rect`), `x`, `y`, `w`, `h` (Plan = 1000 × 640), `min`, `max`, `j` (gleiches `j` = zusammengestellt) |
 | `menu` | Gericht: `n`, `p`, `cat` (`ent`/`pri`/`pos`/`beb`), `o` |
-| `res` | Reservierung oder Warteliste: `loc`, `d`, `a`, `n`, `p`, `tel`, `src`, `tb`, `dep`, `alg` (Liste: `a:gluten` … für die Hauptallergene, sonst freier Text), `note`, `tags` (Anlässe: `bday`, `anniv` … oder freier Text), `st` (`''`/`seated`/`noshow`/`cancel`/`wait`), `at`, `nt`, `v` |
+| `res` | Reservierung oder Warteliste: `loc`, `d`, `a`, `n`, `p`, `tel`, `src`, `tb`, `dep`, `alg` (Liste: `a:gluten` … für die Hauptallergene, sonst freier Text), `note`, `tags` (Anlässe: `bday`, `anniv`, `date`, `proposal`, `regular`, `vip` oder freier Text), `st` (`''`/`seated`/`noshow`/`cancel`/`wait`), `at`, `nt`, `v` |
 | `visit` | Besetzter Tisch: `loc`, `tb` (Tisch-IDs), `p`, `n`, `res`, `a` (seit), `end`, `tot`, `cl` (abgeräumt), `bill`, `dk`, `note`, `by`, `it` (Positionen `{id → {m, n, p, q, seat, cat, s, t}}`) |
 
 Alle Einträge haben `t` (letzte Änderung, neuere gewinnt) und ggf. `del: true`. Positionen einer Bestellung werden einzeln zusammengeführt, damit zwei Kellner gleichzeitig am selben Tisch bestellen können. Die App synchronisiert alle 20 Sekunden.
