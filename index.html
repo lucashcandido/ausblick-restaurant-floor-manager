@@ -191,6 +191,9 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
 .alg button.on{border-color:var(--out);background:var(--out-soft);color:var(--out)}
 .alg button.on::before{content:'✓ '}
 .alg button.own{border-style:dashed}
+.alg.occ button.on{border-color:var(--blue);background:var(--blue-soft);color:var(--blue)}
+.tag.occ{background:var(--blue-soft);color:var(--blue)}
+.tb .occi{font-size:13px;line-height:1}
 .algadd{display:flex;gap:6px;margin-top:8px}
 .algadd input{flex:1;min-width:0;padding:8px 12px;border:1.5px solid var(--line);border-radius:999px;background:var(--card);font-size:15px}
 .algadd input:focus{outline:none;border-color:var(--accent)}
@@ -321,7 +324,7 @@ es: { locale:'es-AR', title:'Salón', setup_sub:'Configuración del dispositivo'
   w_title:'Sentar sin reserva', w_name:'Nombre (opcional)', w_people:'Personas', w_go:'Sentar', w_limit:'Sin reserva se aceptan grupos de {0} a {1} personas. Tocá «Sentar» otra vez para sentarlos igual.', w_small:'La mesa es para {0}–{1} personas. Tocá «Sentar» otra vez para sentarlos igual.',
   p_title:'Elegir mesa', p_best:'Sugerida', p_busy:'ocupada', p_resv:'reservada {0}', p_none:'No hay mesas libres para {0} personas.',
   r_new:'Nueva reserva', r_wait_new:'+ Lista de espera', r_today:'Hoy', r_wait:'Lista de espera', r_list:'Reservas', r_none:'No hay reservas para este día.', r_wait_none:'Nadie esperando.',
-  r_date:'Fecha', r_time:'Hora', r_name:'Nombre', r_people:'Personas', r_tel:'Teléfono', r_src:'Origen', src_tel:'Teléfono', src_walk:'En persona', src_web:'En línea', r_table:'Mesa', r_auto:'Sugerida automáticamente', r_sug:'Sugerida {0}', r_nosug:'Sin mesa libre', r_dep:'Depósito', r_alg:'Alergias', ph_alg:'Frutos secos, celíacos…', r_notes:'Notas', ph_rnotes:'Cumpleaños, silla de bebé, ventana…', r_tags:'Etiquetas', tag_vip:'VIP', tag_bday:'Cumpleaños',
+  r_date:'Fecha', r_time:'Hora', r_name:'Nombre', r_people:'Personas', r_tel:'Teléfono', r_src:'Origen', src_tel:'Teléfono', src_walk:'En persona', src_web:'En línea', r_table:'Mesa', r_auto:'Sugerida automáticamente', r_sug:'Sugerida {0}', r_nosug:'Sin mesa libre', r_dep:'Depósito', r_alg:'Alergias', ph_alg:'Frutos secos, celíacos…', r_notes:'Notas', ph_rnotes:'Cumpleaños, silla de bebé, ventana…', r_tags:'Ocasión especial', tag_vip:'VIP', tag_bday:'Cumpleaños', tag_anniv:'Aniversario', tag_date:'Cita romántica', tag_proposal:'Pedida de mano', tag_celebr:'Celebración', tag_grad:'Graduación', tag_farewell:'Despedida', tag_business:'Negocios', tag_first:'Primera visita', tag_regular:'Cliente habitual', occ_other:'Otra ocasión…', occ_hint:'Tocá para marcar. Si no está, escribila abajo: queda guardada para la próxima.',
   r_state:'Estado', rs_:'Reservada', rs_seated:'Sentados', rs_noshow:'No vino', rs_cancel:'Cancelada', rs_wait:'En espera', r_seat:'Sentar', r_noshow:'No vino', r_big:'Grupo grande', r_dep_s:'Depósito {0}', r_waiting:'espera {0}', r_notify:'Avisar', r_notified:'avisado {0}', r_notify_msg:'Hola {0}, tu mesa en {1} ya está lista. ¡Te esperamos!', r_sms:'SMS', r_wa:'WhatsApp', r_remove:'Quitar', r_removed:'{0} quitado de la espera.',
   err_rname:'Escribí el nombre.', err_rtime:'Poné fecha y hora.', err_rpeople:'¿Cuántas personas?', r_saved:'Reserva guardada.', r_deleted:'Reserva eliminada.', r_conflict:'Esa mesa ya está reservada u ocupada a esa hora. Tocá «Listo» otra vez para guardarla igual.', r_over_online:'Ojo: es más grande que el límite para reservas en línea ({0}).',
   delete:'Eliminar', discard:'Descartar', done:'Listo', close:'Cerrar', undo:'Deshacer', saved:'Guardado.', duplicate:'Duplicar', edit:'Editar', o_send1:'Enviar', o_serve1:'Servido',
@@ -353,7 +356,7 @@ en: { locale:'en-US', title:'Floor', setup_sub:'Device setup', tab_code:'I have 
   w_title:'Seat walk-in', w_name:'Name (optional)', w_people:'Guests', w_go:'Seat', w_limit:'Walk-ins are accepted for parties of {0} to {1}. Tap “Seat” again to seat them anyway.', w_small:'The table is for {0}–{1} guests. Tap “Seat” again to seat them anyway.',
   p_title:'Pick a table', p_best:'Suggested', p_busy:'occupied', p_resv:'reserved {0}', p_none:'No free table for {0} guests.',
   r_new:'New booking', r_wait_new:'+ Waitlist', r_today:'Today', r_wait:'Waitlist', r_list:'Bookings', r_none:'No bookings for this day.', r_wait_none:'Nobody waiting.',
-  r_date:'Date', r_time:'Time', r_name:'Name', r_people:'Guests', r_tel:'Phone', r_src:'Source', src_tel:'Phone', src_walk:'In person', src_web:'Online', r_table:'Table', r_auto:'Suggested automatically', r_sug:'Suggested {0}', r_nosug:'No free table', r_dep:'Deposit', r_alg:'Allergies', ph_alg:'Nuts, gluten…', r_notes:'Notes', ph_rnotes:'Birthday, high chair, window…', r_tags:'Tags', tag_vip:'VIP', tag_bday:'Birthday',
+  r_date:'Date', r_time:'Time', r_name:'Name', r_people:'Guests', r_tel:'Phone', r_src:'Source', src_tel:'Phone', src_walk:'In person', src_web:'Online', r_table:'Table', r_auto:'Suggested automatically', r_sug:'Suggested {0}', r_nosug:'No free table', r_dep:'Deposit', r_alg:'Allergies', ph_alg:'Nuts, gluten…', r_notes:'Notes', ph_rnotes:'Birthday, high chair, window…', r_tags:'Special occasion', tag_vip:'VIP', tag_bday:'Birthday', tag_anniv:'Anniversary', tag_date:'Date night', tag_proposal:'Proposal', tag_celebr:'Celebration', tag_grad:'Graduation', tag_farewell:'Farewell', tag_business:'Business', tag_first:'First visit', tag_regular:'Regular', occ_other:'Other occasion…', occ_hint:'Tap to mark. If it isn’t listed, type it below: it’s kept for next time.',
   r_state:'Status', rs_:'Booked', rs_seated:'Seated', rs_noshow:'No-show', rs_cancel:'Cancelled', rs_wait:'Waiting', r_seat:'Seat', r_noshow:'No-show', r_big:'Large party', r_dep_s:'Deposit {0}', r_waiting:'waiting {0}', r_notify:'Notify', r_notified:'notified {0}', r_notify_msg:'Hi {0}, your table at {1} is ready. See you soon!', r_sms:'SMS', r_wa:'WhatsApp', r_remove:'Remove', r_removed:'{0} removed from the waitlist.',
   err_rname:'Enter the name.', err_rtime:'Enter date and time.', err_rpeople:'How many guests?', r_saved:'Booking saved.', r_deleted:'Booking deleted.', r_conflict:'That table is already booked or occupied at that time. Tap “Done” again to save it anyway.', r_over_online:'Note: larger than the online booking limit ({0}).',
   delete:'Delete', discard:'Discard', done:'Done', close:'Close', undo:'Undo', saved:'Saved.', duplicate:'Duplicate', edit:'Edit', o_send1:'Send', o_serve1:'Served',
@@ -385,7 +388,7 @@ de: { locale:'de-DE', title:'Saal', setup_sub:'Gerät einrichten', tab_code:'Ich
   w_title:'Ohne Reservierung platzieren', w_name:'Name (optional)', w_people:'Gäste', w_go:'Platzieren', w_limit:'Ohne Reservierung gehen Gruppen von {0} bis {1} Personen. Nochmal „Platzieren“ tippen, um sie trotzdem zu setzen.', w_small:'Der Tisch ist für {0}–{1} Personen. Nochmal „Platzieren“ tippen, um sie trotzdem zu setzen.',
   p_title:'Tisch wählen', p_best:'Vorschlag', p_busy:'besetzt', p_resv:'reserviert {0}', p_none:'Kein freier Tisch für {0} Personen.',
   r_new:'Neue Reservierung', r_wait_new:'+ Warteliste', r_today:'Heute', r_wait:'Warteliste', r_list:'Reservierungen', r_none:'Keine Reservierungen an diesem Tag.', r_wait_none:'Niemand wartet.',
-  r_date:'Datum', r_time:'Uhrzeit', r_name:'Name', r_people:'Personen', r_tel:'Telefon', r_src:'Herkunft', src_tel:'Telefon', src_walk:'Persönlich', src_web:'Online', r_table:'Tisch', r_auto:'Automatisch vorgeschlagen', r_sug:'Vorschlag {0}', r_nosug:'Kein Tisch frei', r_dep:'Anzahlung', r_alg:'Allergien', ph_alg:'Nüsse, Gluten…', r_notes:'Notizen', ph_rnotes:'Geburtstag, Kinderstuhl, Fenster…', r_tags:'Etiketten', tag_vip:'VIP', tag_bday:'Geburtstag',
+  r_date:'Datum', r_time:'Uhrzeit', r_name:'Name', r_people:'Personen', r_tel:'Telefon', r_src:'Herkunft', src_tel:'Telefon', src_walk:'Persönlich', src_web:'Online', r_table:'Tisch', r_auto:'Automatisch vorgeschlagen', r_sug:'Vorschlag {0}', r_nosug:'Kein Tisch frei', r_dep:'Anzahlung', r_alg:'Allergien', ph_alg:'Nüsse, Gluten…', r_notes:'Notizen', ph_rnotes:'Geburtstag, Kinderstuhl, Fenster…', r_tags:'Besonderer Anlass', tag_vip:'VIP', tag_bday:'Geburtstag', tag_anniv:'Jahrestag', tag_date:'Romantisches Date', tag_proposal:'Heiratsantrag', tag_celebr:'Feier', tag_grad:'Abschluss', tag_farewell:'Abschied', tag_business:'Geschäftsessen', tag_first:'Erster Besuch', tag_regular:'Stammgast', occ_other:'Anderer Anlass…', occ_hint:'Antippen zum Markieren. Fehlt einer, unten eintragen: er bleibt fürs nächste Mal gespeichert.',
   r_state:'Status', rs_:'Reserviert', rs_seated:'Platziert', rs_noshow:'Nicht gekommen', rs_cancel:'Storniert', rs_wait:'Wartet', r_seat:'Platzieren', r_noshow:'Nicht gekommen', r_big:'Große Gruppe', r_dep_s:'Anzahlung {0}', r_waiting:'wartet {0}', r_notify:'Benachrichtigen', r_notified:'benachrichtigt {0}', r_notify_msg:'Hallo {0}, dein Tisch im {1} ist bereit. Bis gleich!', r_sms:'SMS', r_wa:'WhatsApp', r_remove:'Entfernen', r_removed:'{0} von der Warteliste entfernt.',
   err_rname:'Gib den Namen ein.', err_rtime:'Datum und Uhrzeit eingeben.', err_rpeople:'Wie viele Personen?', r_saved:'Reservierung gespeichert.', r_deleted:'Reservierung gelöscht.', r_conflict:'Der Tisch ist zu der Zeit schon reserviert oder besetzt. Nochmal „Fertig“ tippen, um trotzdem zu speichern.', r_over_online:'Achtung: größer als die Grenze für Online-Reservierungen ({0}).',
   delete:'Löschen', discard:'Verwerfen', done:'Fertig', close:'Schließen', undo:'Rückgängig', saved:'Gespeichert.', duplicate:'Duplizieren', edit:'Bearbeiten', o_send1:'Senden', o_serve1:'Serviert',
@@ -447,6 +450,16 @@ function algToken(txt){   /* "frutos secos" → 'a:nuts' if it's one of the comm
   for(var i = 0; i < ALG.length; i++) for(var l in TX){ var s = TX[l]['al_' + ALG[i]]; if(s && (norm(s) === n || norm(s).replace(/\s*\(.*\)/, '') === n)) return 'a:' + ALG[i]; }
   return txt.trim().replace(/\s+/g, ' ').replace(/^./, function(c){ return c.toUpperCase(); });
 }
+/* occasions and guest tags (r.tags): known keys with an icon, or free text someone typed (kept as a tag for next time) */
+var OCC = ['bday', 'anniv', 'date', 'proposal', 'celebr', 'grad', 'farewell', 'business', 'first', 'regular', 'vip'];
+var OCC_ICON = { bday: '🎂', anniv: '💍', date: '❤️', proposal: '💐', celebr: '🎉', grad: '🎓', farewell: '👋', business: '💼', first: '✨', regular: '🏠', vip: '⭐' };
+var occName = function(x){ return OCC.indexOf(x) >= 0 ? t('tag_' + x) : x; };
+var occLabel = function(x){ return (OCC_ICON[x] || '🎉') + ' ' + occName(x); };
+function occToken(txt){
+  var n = norm(txt).trim(); if(!n) return '';
+  for(var i = 0; i < OCC.length; i++) for(var l in TX){ var s = TX[l]['tag_' + OCC[i]]; if(s && norm(s) === n) return OCC[i]; }
+  return txt.trim().replace(/\s+/g, ' ').replace(/^./, function(c){ return c.toUpperCase(); });
+}
 var money = function(n){ return (S().cur || '$') + ' ' + Math.round(n || 0).toLocaleString(t('locale')); };
 
 /* ---------- state ----------
@@ -455,7 +468,7 @@ var money = function(n){ return (S().cur || '$') + ' ' + Math.round(n || 0).toLo
    tbl  table: loc, n, sh (round/sq/rect), x, y, w, h (floor = 1000 × 640), min, max, j (join id; same j = joined)
    flr  floor of a location (tab above the plan): loc, n, o; a table's fl says which floor it is on (none = the first)
    menu dish: n, p (price), cat (ent/pri/pos/beb), o
-   res  booking or waitlist: loc, d, a (HH:MM), n, p, tel, src (tel/walk/web), tb (table id), dep, alg [allergies: 'a:gluten'… for the common ones, free text for others], note, tags[], st ('' / seated / noshow / cancel / wait), at (waitlist since), nt (notified), v (visit)
+   res  booking or waitlist: loc, d, a (HH:MM), n, p, tel, src (tel/walk/web), tb (table id), dep, alg [allergies: 'a:gluten'… for the common ones, free text for others], note, tags [occasions: bday, anniv, … or free text], st ('' / seated / noshow / cancel / wait), at (waitlist since), nt (notified), v (visit)
    visit a seated table: loc, tb [table ids], p, n, res, a (seated ms), end, cl (cleaned ms), bill (ms), dk (drinks checked ms), note, by, it {id → {id, m, n, p, q, seat, cat, s (0 new · 1 sent · 2 served), t, by, del}}
    Every record has t (last change; newer wins) and del: true when deleted. */
 var cfg = store.get(KEY.cfg, null);              /* {repo, token, code, name} or {demo: true, name} */
@@ -714,7 +727,8 @@ $('#add').onclick = function(){ if(hub === 'res' || hub === 'ord') editRes(null,
 var W = 1000, H = 640;
 var pos = function(x){ return 'left:' + (x.x / W * 100) + '%;top:' + (x.y / H * 100) + '%;width:' + (x.w / W * 100) + '%;height:' + (x.h / H * 100) + '%'; };
 function tileText(u, s){
-  var now = Date.now(), name = '<span>' + esc(u.n) + '</span>';
+  var now = Date.now(), rr = s.r || (s.v && s.v.res && data[s.v.res]), occ = rr && (rr.tags || []).length ? '<span class="occi" title="' + esc(rr.tags.map(occName).join(', ')) + '"> ' + rr.tags.slice(0, 2).map(function(x){ return OCC_ICON[x] || '🎉'; }).join('') + '</span>' : '';
+  var name = '<span>' + esc(u.n) + occ + '</span>';
   if(floorMode === 'edit') return name + '<small>' + (+u.min) + '–' + (+u.max) + '</small>';
   if(s.st === 'eat' || s.st === 'bill'){
     var m = (now - s.v.a) / MIN, over = m - durFor(s.v.p);
@@ -947,7 +961,7 @@ function openUnit(key){
       h += '<div class="tinfo"><div>' + esc(t('t_people')) + '<b><span class="step"><button type="button" data-pp="-1">−</button><b>' + (+v.p) + '</b><button type="button" data-pp="1">+</button></span></b></div>' +
         '<div class="' + (over > 0 ? 'late' : '') + '">' + esc(t('t_time')) + '<b>' + dur(m) + '</b>' + (over > 0 ? esc(t('t_over', dur(over))) : esc(t('t_exp')) + ' ' + dur(exp)) + '</div>' +
         '<div>' + esc(t('t_free_at')) + '<b>' + hm(Math.max(now, v.a + exp * MIN)) + '</b>' + esc(t('t_seated')) + ' ' + hm(v.a) + '</div></div>';
-      var notes = [r && r.n ? r.n : v.n, r && algList(r).length ? '⚠ ' + algText(r) : '', r && (r.tags || []).length ? r.tags.map(function(x){ return t('tag_' + x); }).join(', ') : '', r && r.note, v.note].filter(Boolean);
+      var notes = [r && r.n ? r.n : v.n, r && algList(r).length ? '⚠ ' + algText(r) : '', r && (r.tags || []).length ? r.tags.map(occLabel).join(', ') : '', r && r.note, v.note].filter(Boolean);
       if(notes.length) h += '<div class="note">' + esc(notes.join(' · ')) + '</div>';
       var its = items(v), unsent = its.filter(function(i){ return !i.s; }).length, seats = {};
       h += '<h4>' + esc(t('t_order')) + '</h4>';
@@ -1073,7 +1087,7 @@ function resItem(r){
   var tags = '';
   if(+r.p >= s.big) tags += '<span class="tag big">' + esc(t('r_big')) + '</span>';
   algList(r).forEach(function(x){ tags += '<span class="tag alg">⚠ ' + esc(algName(x)) + '</span>'; });
-  (r.tags || []).forEach(function(x){ tags += '<span class="tag">' + esc(t('tag_' + x)) + '</span>'; });
+  (r.tags || []).forEach(function(x){ tags += '<span class="tag occ">' + esc(occLabel(x)) + '</span>'; });
   if(+r.dep) tags += '<span class="tag ok">' + esc(t('r_dep_s', money(r.dep))) + '</span>';
   var meta = [esc(t('src_' + (r.src || 'tel')))];
   if(r.st === 'wait') meta.unshift(esc(t('r_waiting', dur((Date.now() - (r.at || r.t)) / MIN))) + (r.nt ? ' · ' + esc(t('r_notified', hm(r.nt))) : ''));
@@ -1142,7 +1156,7 @@ function editRes(orig, preset){
     (isWait ? '' : '<div class="field"><span class="lbl">' + esc(t('r_src')) + '</span><div class="seg" id="rSrc">' + ['tel', 'walk', 'web'].map(function(s){ return '<button type="button" data-src="' + s + '"' + (r.src === s ? ' class="on"' : '') + '>' + esc(t('src_' + s)) + '</button>'; }).join('') + '</div></div>') +
     '<div class="field"><span class="lbl">' + esc(t('r_alg')) + '</span><div class="alg" id="rAlg"></div><div class="algadd"><input id="rAlgNew" placeholder="' + esc(t('alg_other')) + '" autocomplete="off" enterkeyhint="done"><button class="btn sm" id="rAlgAdd" type="button">' + esc(t('alg_add')) + '</button></div><p class="hint">' + esc(t('alg_hint')) + '</p></div>' +
     (isWait ? '' : '<div class="grid2 wrap"><div class="field"><label for="rDep">' + esc(t('r_dep')) + '</label><input id="rDep" type="number" min="0" inputmode="decimal" value="' + (+r.dep || '') + '"></div></div>') +
-    '<div class="field"><span class="lbl">' + esc(t('r_tags')) + '</span><div class="seg" id="rTags">' + ['vip', 'bday'].map(function(x){ return '<button type="button" data-tag="' + x + '"' + ((r.tags || []).indexOf(x) >= 0 ? ' class="on"' : '') + '>' + esc(t('tag_' + x)) + '</button>'; }).join('') + '</div></div>' +
+    '<div class="field"><span class="lbl">' + esc(t('r_tags')) + '</span><div class="alg occ" id="rTags"></div><div class="algadd"><input id="rOccNew" placeholder="' + esc(t('occ_other')) + '" autocomplete="off" enterkeyhint="done"><button class="btn sm" id="rOccAdd" type="button">' + esc(t('alg_add')) + '</button></div><p class="hint">' + esc(t('occ_hint')) + '</p></div>' +
     '<div class="field"><label for="rNote">' + esc(t('r_notes')) + '</label><textarea id="rNote" placeholder="' + esc(t('ph_rnotes')) + '">' + esc(r.note) + '</textarea></div>' +
     (orig && !isWait ? '<div class="field"><span class="lbl">' + esc(t('r_state')) + '</span><div class="seg" id="rSt">' + ['', 'seated', 'noshow', 'cancel'].map(function(s){ return '<button type="button" data-st="' + s + '"' + ((r.st || '') === s ? ' class="on"' : '') + '>' + esc(t('rs_' + s)) + '</button>'; }).join('') + '</div></div>' : '') +
     '<div id="rMsg"></div><div class="row2">' + (orig ? '<button class="btn danger" id="rDel" type="button">' + esc(t('delete')) + '</button>' : '') + '<button class="btn" data-discard type="button">' + esc(t('discard')) + '</button><button class="btn primary" data-close type="button">' + esc(t('done')) + '</button></div>';
@@ -1178,12 +1192,27 @@ function editRes(orig, preset){
     var tb = $('#rTb', el); if(tb) tb.onchange = function(){ r.tbSet = !!tb.value; r.tb = tb.value; warned = false; };
     $$('[data-src]', el).forEach(function(b){ b.onclick = function(){ r.src = b.dataset.src; $$('[data-src]', el).forEach(function(o){ o.classList.toggle('on', o === b); }); }; });
     $$('[data-st]', el).forEach(function(b){ b.onclick = function(){ r.st = b.dataset.st; $$('[data-st]', el).forEach(function(o){ o.classList.toggle('on', o === b); }); }; });
-    $$('[data-tag]', el).forEach(function(b){ b.onclick = function(){ var x = b.dataset.tag, l = r.tags || (r.tags = []), i = l.indexOf(x); if(i >= 0) l.splice(i, 1); else l.push(x); b.classList.toggle('on', i < 0); }; });
+    /* occasion tags: the known ones, then own ones used before in any booking */
+    r.tags = (r.tags || []).slice();
+    var ownOcc = function(){ var seen = {}, out = []; live('res').concat([r]).forEach(function(x){ (x.tags || []).forEach(function(a){ if(OCC.indexOf(a) < 0 && !seen[norm(a)]){ seen[norm(a)] = 1; out.push(a); } }); }); return out.sort(natural); };
+    var drawOcc = function(){
+      $('#rTags', el).innerHTML = OCC.concat(ownOcc()).map(function(a){ var on = r.tags.indexOf(a) >= 0; return '<button type="button" data-occ="' + esc(a) + '" class="' + (on ? 'on' : '') + (OCC.indexOf(a) < 0 ? ' own' : '') + '" aria-pressed="' + on + '">' + esc(occLabel(a)) + '</button>'; }).join('');
+    };
+    var addOcc = function(){
+      var inp = $('#rOccNew', el), tok = occToken(inp.value);
+      if(tok && !r.tags.some(function(a){ return norm(a) === norm(tok); })) r.tags.push(tok);
+      inp.value = ''; drawOcc();
+    };
+    drawOcc();
+    $('#rTags', el).addEventListener('click', function(e){ var b = e.target.closest('[data-occ]'); if(!b) return; var a = b.dataset.occ, i = r.tags.indexOf(a); if(i >= 0) r.tags.splice(i, 1); else r.tags.push(a); drawOcc(); });
+    $('#rOccAdd', el).onclick = addOcc;
+    $('#rOccNew', el).addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); addOcc(); } });
     var rd = $('#rDel', el); if(rd) rd.onclick = function(){ close(el); var o = data[r.id]; o.del = true; touch(o); toast(t('r_deleted'), t('undo'), function(){ o.del = false; touch(o); }); };
     if(!orig) setTimeout(function(){ $('#rN', el).focus(); }, 50);
     el._save = function(){
       r.n = $('#rN', el).value.trim(); r.tel = $('#rT', el).value.trim(); r.note = $('#rNote', el).value.trim();
       if($('#rAlgNew', el).value.trim()) addAlg();   /* typed but not added yet: keep it */
+      if($('#rOccNew', el).value.trim()) addOcc();
       var blank = !orig && !r.n && !r.tel && !r.note && !r.alg.length;
       if(blank) return true;
       if(!isWait){ r.d = $('#rD', el).value; r.a = $('#rA', el).value; r.dep = num($('#rDep', el).value, 0); }
@@ -1195,7 +1224,7 @@ function editRes(orig, preset){
         var s = S(); if(r.src === 'web' && r.p > s.onMax && !warned && !(orig && orig.p === r.p)){ warned = true; msg(t('r_over_online', s.onMax), 'warn'); return false; }
       }
       delete r.tbSet;
-      if(orig && JSON.stringify(Object.assign({}, orig, { t: 0, alg: algList(orig) })) === JSON.stringify(Object.assign({}, r, { t: 0 }))) return true;
+      if(orig && JSON.stringify(Object.assign({}, orig, { t: 0, alg: algList(orig), tags: orig.tags || [] })) === JSON.stringify(Object.assign({}, r, { t: 0 }))) return true;
       if(!orig) r.by = cfg.name;
       touch(r); toast(t('r_saved'));
       return true;
@@ -1414,7 +1443,7 @@ function loadSample(){
   openV([T.T12.id], 8, ago(58), 'Leo');
   openV([T.T21.id], 3, ago(22), 'Sam'); openV([T.T24.id], 6, ago(95), 'Ana', { bill: ago(2) });
   var v6 = add({ id: uid(), k: 'visit', loc: L, tb: [T.T6.id], p: 2, a: ago(80), end: ago(6), by: 'Ana', it: order(2, ago(80), 'Ana', true) }); v6.tot = visitTotal(v6);
-  add({ id: uid(), k: 'res', loc: L, d: slot(20).d, a: slot(20).a, n: 'Alvarez', p: 2, tel: '+54 9 11 5555-0101', src: 'tel', tb: T.T2.id, st: '', tags: [] });
+  add({ id: uid(), k: 'res', loc: L, d: slot(20).d, a: slot(20).a, n: 'Alvarez', p: 2, tel: '+54 9 11 5555-0101', src: 'tel', tb: T.T2.id, st: '', tags: ['anniv'] });
   add({ id: uid(), k: 'res', loc: L, d: slot(35).d, a: slot(35).a, n: 'Chen', p: 8, tel: '+54 9 11 5555-0102', src: 'web', tb: T.T8.id, dep: 20000, alg: ['a:nuts', 'Kiwi'], st: '', tags: ['bday'] });
   add({ id: uid(), k: 'res', loc: L, d: slot(50).d, a: slot(50).a, n: 'Okafor', p: 4, tel: '', src: 'tel', tb: T.T3.id, st: '', tags: ['vip'] });
   add({ id: uid(), k: 'res', loc: L, d: slot(95).d, a: slot(95).a, n: 'Ruiz', p: 2, src: 'walk', tb: T.B1.id, st: '', tags: [] });
